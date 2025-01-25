@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'pages/splash.dart'; // Importa o arquivo de splash screen
-import 'pages/home.dart'; // Importa o arquivo de home
+// Importa o arquivo de home
 
 
 void main() {

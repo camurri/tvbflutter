@@ -6,6 +6,7 @@ class Splash extends StatefulWidget {
   const Splash({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SplashState createState() => _SplashState();
 }
 
@@ -16,6 +17,7 @@ class _SplashState extends State<Splash> {
     // Simula uma espera de 3 segundos antes de mudar para a tela principal
     Future.delayed(const Duration(seconds: 3), () {
       // Navega para a Home Screen após o Splash
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Home()));
 
     });
