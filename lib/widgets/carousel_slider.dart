@@ -18,7 +18,7 @@ class CarouselWidget extends StatelessWidget {
         viewportFraction: 0.8,
         initialPage: 0,
       ),
-      items: [1, 2, 3,].map((i) {
+      items: [1, 2, 3, 4, 5].map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
@@ -29,7 +29,7 @@ class CarouselWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8.0),
               ),
               child: Center(
-                child: Text('Item $i', style: TextStyle(fontSize: 16.0)),
+                child: Text('Item $i', style: TextStyle(fontSize: 16.0, color: Colors.white)),
               ),
             );
           },

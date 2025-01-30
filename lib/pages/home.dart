@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 
-
-
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -16,10 +14,19 @@ class Home extends StatelessWidget {
         child: Column(
           children: [
             Image.asset('assets/images/logo.png'),
-            CarouselWidget()
+            CarouselWidget(),
 
+            SizedBox(height: 20),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
-      ],
+              children: [
+                ElevatedButton(onPressed: null, child: Text('WathsApp')),
+                ElevatedButton(onPressed: null, child: Text('Instagram')),
+                ElevatedButton(onPressed: null, child: Text('Facebook')),
+
+              ],
+            )
+          ],
         ),
       ),
     );
