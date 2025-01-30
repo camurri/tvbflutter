@@ -8,7 +8,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TVB Digital'), // Título da barra de navegação
+        foregroundColor: const Color(0xFF032156),
+        title: const Text('TVB Digital'),
       ),
       body: Center(
         child: Column(
@@ -20,10 +21,9 @@ class Home extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 
               children: [
-                ElevatedButton(onPressed: null, child: Text('WathsApp')),
+                ElevatedButton(onPressed: null, child: Text('WathsApp', )),
                 ElevatedButton(onPressed: null, child: Text('Instagram')),
                 ElevatedButton(onPressed: null, child: Text('Facebook')),
-
               ],
             )
           ],
