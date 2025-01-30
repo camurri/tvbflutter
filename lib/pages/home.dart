@@ -14,18 +14,35 @@ class Home extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Image.asset('assets/images/logo.png'),
+            Image.asset('assets/images/logo.png', height: 250),
             CarouselWidget(),
-
-            SizedBox(height: 20),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
+            SizedBox(height: 35),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(onPressed: null, child: Text('WathsApp', )),
-                ElevatedButton(onPressed: null, child: Text('Instagram')),
-                ElevatedButton(onPressed: null, child: Text('Facebook')),
+                ElevatedButton(
+                    onPressed: null,
+                    child: Text(
+                      'WathsApp',
+                      style: TextStyle(color: Color(0xFF032156)),
+                    )),
+                ElevatedButton(
+                    onPressed: null,
+                    child: Text(
+                      'Instagram',
+                      style: TextStyle(color: Color(0xFF032156)),
+                    )),
+                ElevatedButton(
+                    onPressed: null,
+                    child: Text(
+                      'Facebook',
+                      style: TextStyle(color: Color(0xFF032156)),
+                    )),
+
               ],
-            )
+            ),
+            SizedBox(height: 50),
+            Text('Rua Meciacú 1500 - Jardim de Aruanda - Campinas'),
           ],
         ),
       ),
