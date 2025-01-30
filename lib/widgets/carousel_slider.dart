@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:app_tvb/utils/nav.dart';
+import 'package:app_tvb/texts/texts.dart';
 
 class CarouselWidget extends StatelessWidget {
   const CarouselWidget({super.key});
@@ -31,7 +31,8 @@ class CarouselWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildCarousel(List<Map<String, dynamic>> items, BuildContext context) {
+  Widget _buildCarousel(
+      List<Map<String, dynamic>> items, BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
         height: 250.0,
@@ -58,7 +59,8 @@ class CarouselWidget extends StatelessWidget {
                   children: [
                     Text(
                       item['text'],
-                      style: const TextStyle(fontSize: 32.0, color: Color(0xFF032156)),
+                      style: const TextStyle(
+                          fontSize: 32.0, color: Color(0xFF032156)),
                     ),
                     Icon(
                       item['icon'],
@@ -79,13 +81,14 @@ class CarouselWidget extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: const Color(0xFF035653),
-        content: Text('Você clicou em: $itemText'),
+        content: Text('You tapped on: $itemText'),
         duration: const Duration(seconds: 2),
       ),
     );
 
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
+        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
           builder: (context) => DetailPage(title: itemText),
@@ -104,10 +107,24 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Text(
-          'Detalhes sobre: $title',
-          style: const TextStyle(fontSize: 24),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: Image.asset('assets/images/ciganos.jpg', height: 200),
+              ),
+              const SizedBox(height: 20),
+
+              Text(
+                texts['gira_cigana'] ?? 'Texto não encontrado.',
+                style: const TextStyle(fontSize: 18, height: 1.5),
+              ),
+            ],
+          ),
         ),
       ),
     );
