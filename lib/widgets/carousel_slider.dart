@@ -114,7 +114,7 @@ class DetailPage extends StatelessWidget {
       textContent = texts.containsKey('Gira Cigana')
           ? texts['Gira Cigana']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/giraCigana.png';
 
     } else if (title == 'Umbanda Pet') {
       textContent = texts.containsKey('Umbanda Pet')
@@ -126,21 +126,21 @@ class DetailPage extends StatelessWidget {
       textContent = texts.containsKey('Gira de Cura')
           ? texts['Gira de Cura']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/giraDeCura.png';
 
     }
     else if (title == 'Jardim de Aruanda') {
       textContent = texts.containsKey('Jardim de Aruanda')
           ? texts['Jardim de Aruanda']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/jardimDeAruanda.png';
     }
 
     else if (title == 'Gira das Bruxas') {
       textContent = texts.containsKey('Gira das Bruxas')
           ? texts['Gira das Bruxas']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/giraDasBruxas.png';
     }
     else if (title == 'Como chegar?') {
       textContent = texts.containsKey('Como chegar?')
@@ -154,7 +154,7 @@ class DetailPage extends StatelessWidget {
       textContent = texts.containsKey('Sagrado Feminino')
           ? texts['Sagrado Feminino']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/sagradoFeminino.png';
     }
     else if (title == 'Giras da Semana') {
       textContent = texts.containsKey('Giras da Semana')

@@ -21,8 +21,6 @@ Mães responsáveis do dia: Mãe Camila e Mãe Jacqueline, início das atividade
 ''';
 
 String giraDasBruxas = '''Gira das Bruxas
-Gira Das Bruxas 
-
 A Gira das Bruxas é uma linha de trabalho nova que chegou para ficar. 
 
 Ao contrário do que se pensam por aí, é uma linha maravilhosa e vem para somar e fazer diferente em nosso terreiro, mostrando além de tudo que não temos nenhum tipo de preconceito. 
@@ -35,8 +33,6 @@ Responsáveis pela gira: Mãe Paula, Mãe Bruna e Mãe Jacqueline, acompanhem no
 ''';
 
 String giraDeCura = '''
-Gira de cura
-
 A gira de cura é uma gira maravilhosa, leve onde vem em terra os médicos de Aruanda tratar os pacientes que precisam de ajuda espiritual. 
 
 É uma gira diferente e ajuda muitas pessoas em seu dia a dia, com doenças e dores. 
@@ -48,8 +44,6 @@ Mãe responsável do dia: Mãe Hosana, a gira inicia as 19hs.
 
 
 String sagradoFeminino = '''
-Sagrado Feminino
-
 O sagrado feminino é uma roda de conversa de mulheres para tratarmos o nosso feminino. 
 
 Mulheres que já foram abusadas, humilhadas, sofreram qualquer tipo de preconceito. 
@@ -62,8 +56,6 @@ Responsável pelo sagrado Feminino: Terapeuta Mãe Paula, a roda acontece no pri
 ''';
 
 String umbandaPet = '''
-Umbanda Pet
-
 A umbanda Pet é uma gira voltada para nossos animaizinhos pois eles também precisam de um passe do preto velho ou o abraço do erê.
 
 É uma gira maravilhosa, cheio de bichinhos de estimação. 
