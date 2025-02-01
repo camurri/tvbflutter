@@ -19,6 +19,8 @@ class CarouselWidget extends StatelessWidget {
       {'text': 'Gira Cigana', 'icon': Icons.star_border_outlined},
       {'text': 'Gira de Cura', 'icon': Icons.heart_broken},
       {'text': 'Umbanda Pet', 'icon': Icons.pets},
+      {'text': 'Sagrado Feminino', 'icon' : Icons.home},
+      {'text': 'Gira das Bruxas', 'icon': Icons.star_border_outlined}
     ];
 
     return Center(
@@ -105,25 +107,108 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String imagePath = '';
+    String textContent = '';
+
+    if (title == 'Gira Cigana') {
+      textContent = texts.containsKey('Gira Cigana')
+          ? texts['Gira Cigana']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+
+    } else if (title == 'Umbanda Pet') {
+      textContent = texts.containsKey('Umbanda Pet')
+          ? texts['Umbanda Pet']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+
+    } else if (title == 'Gira de Cura') {
+      textContent = texts.containsKey('Gira de Cura')
+          ? texts['Gira de Cura']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+
+    }
+    else if (title == 'Jardim de Aruanda') {
+      textContent = texts.containsKey('Jardim de Aruanda')
+          ? texts['Jardim de Aruanda']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+    }
+
+    else if (title == 'Gira das Bruxas') {
+      textContent = texts.containsKey('Gira das Bruxas')
+          ? texts['Gira das Bruxas']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+    }
+    else if (title == 'Como chegar?') {
+      textContent = texts.containsKey('Como chegar?')
+          ? texts['Como chegar?']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+
+    }
+
+    else if (title == 'Sagrado Feminino') {
+      textContent = texts.containsKey('Sagrado Feminino')
+          ? texts['Sagrado Feminino']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+    }
+    else if (title == 'Giras da Semana') {
+      textContent = texts.containsKey('Giras da Semana')
+          ? texts['Giras da Semana']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+
+    }
+    else if (title == 'Pontos do terreiro') {
+      textContent = texts.containsKey('Pontos do terreiro')
+          ? texts['Pontos do terreiro']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+    }
+    else if (title == 'Eventos') {
+      textContent = texts.containsKey('Eventos')
+          ? texts['Eventos']!
+          : 'Texto não encontrado.';
+      imagePath = 'assets/images/umbandaPet.png';
+    }
+
+    else{
+      textContent = texts.containsKey(title)
+          ? texts[title]!
+          : 'Texto ainda não implementado';
+    }
+
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Image.asset('assets/images/ciganos.jpg', height: 200),
-              ),
-              const SizedBox(height: 20),
-
-              Text(
-                texts['gira_cigana'] ?? 'Texto não encontrado.',
-                style: const TextStyle(fontSize: 18, height: 1.5),
-              ),
-            ],
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20.0),
+                  child: Image.asset(
+                    // 'assets/images/umbandaPet.jpeg',
+                    imagePath,
+                    height: 500,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Text(
+                  textContent,
+                  // texts.containsKey('Gira Cigana') ? texts['Gira Cigana']! : 'Texto não encontrado.',
+                  style: const TextStyle(
+                      fontSize: 18, height: 1.5, color: Color(0xFF032156)),
+                ),
+              ],
+            ),
           ),
         ),
       ),
