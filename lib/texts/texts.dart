@@ -68,6 +68,14 @@ Detalhes sobre eventos...
 ''';
 
 
+String pontosDoTerreiro = '''
+Em desenvolvimento!.
+''';
+
+String comoChegar = '''
+Rua Meciacú, 145 Vila Ipê, Campinas/SP
+''';
+
 
 
 Map<String, String> texts = {
@@ -78,5 +86,7 @@ Map<String, String> texts = {
   'Umbanda Pet': umbandaPet,
   'Gira das Bruxas': giraDasBruxas,
   'Sagrado Feminino' : sagradoFeminino,
+  'Pontos do terreiro': pontosDoTerreiro,
+  'Como chegar?': comoChegar,
 };
 

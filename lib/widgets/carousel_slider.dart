@@ -19,7 +19,7 @@ class CarouselWidget extends StatelessWidget {
       {'text': 'Gira Cigana', 'icon': Icons.star_border_outlined},
       {'text': 'Gira de Cura', 'icon': Icons.heart_broken},
       {'text': 'Umbanda Pet', 'icon': Icons.pets},
-      {'text': 'Sagrado Feminino', 'icon' : Icons.home},
+      {'text': 'Sagrado Feminino', 'icon' : Icons.woman},
       {'text': 'Gira das Bruxas', 'icon': Icons.star_border_outlined}
     ];
 
@@ -146,10 +146,8 @@ class DetailPage extends StatelessWidget {
       textContent = texts.containsKey('Como chegar?')
           ? texts['Como chegar?']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
-
+      imagePath = 'assets/images/logo.png';
     }
-
     else if (title == 'Sagrado Feminino') {
       textContent = texts.containsKey('Sagrado Feminino')
           ? texts['Sagrado Feminino']!
@@ -167,7 +165,7 @@ class DetailPage extends StatelessWidget {
       textContent = texts.containsKey('Pontos do terreiro')
           ? texts['Pontos do terreiro']!
           : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
+      imagePath = 'assets/images/curimba.png';
     }
     else if (title == 'Eventos') {
       textContent = texts.containsKey('Eventos')
@@ -207,6 +205,21 @@ class DetailPage extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 18, height: 1.5, color: Color(0xFF032156)),
                 ),
+
+                if (title == 'Como chegar?')
+                  IconButton(
+                    onPressed: () {
+                      // Lógica de navegação ou abrir mapa
+                    },
+                    icon: const Icon(
+                      Icons.location_on,
+                      size: 86.0,
+                      color: Color(0xFF032156),
+                    ),
+                  ),
+
+
+
               ],
             ),
           ),
