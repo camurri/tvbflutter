@@ -66,7 +66,7 @@ As giras acontece sempre no primeiro domingo do mês, responsável pela Gira: Pa
 ''';
 
 String redesSociais = '''
-Detalhes sobre eventos...
+Detalhes...
 ''';
 
 
@@ -143,7 +143,7 @@ TVB
 
 
 Map<String, String> texts = {
-  'Redes Sociais': 'Detalhe sobre as redes sociais',
+  'Redes Sociais': redesSociais,
   'Gira Cigana': giraCigana,
   'Jardim de Aruanda': jardimAruanda,
   'Gira de Cura': giraDeCura,
