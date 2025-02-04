@@ -11,7 +11,7 @@ void main() {
 }
 
 class CarouselWidget extends StatelessWidget {
-   CarouselWidget({super.key});
+  CarouselWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,33 +34,51 @@ class CarouselWidget extends StatelessWidget {
 
   // Lista de itens para o primeiro carrossel
   final List<Map<String, dynamic>> _itemsGeral = [
-    {'text': 'Como chegar?', 'icon': Icons.location_on},
-    {'text': 'Giras da Semana', 'icon': Icons.access_time_outlined},
-    {'text': 'Pontos do terreiro', 'icon': Icons.library_music},
-    {'text': 'Redes Sociais', 'icon': Icons.facebook},
+    {'text': 'Como chegar?', 'icon': 'assets/images/road.png'},
+    {'text': 'Giras da Semana', 'icon': 'assets/images/schedule.png'},
+    {'text': 'Pontos do terreiro', 'icon': 'assets/images/african-drum.png'},
+    {'text': 'Redes Sociais', 'icon': 'assets/images/social-media.png'},
   ];
 
   // Lista de itens para o segundo carrossel
   final List<Map<String, dynamic>> _itemsGiras = [
-    {'text': 'Jardim de Aruanda', 'icon': Icons.bedroom_baby_outlined},
-    {'text': 'Gira Cigana', 'icon': Icons.star_border_outlined},
-    {'text': 'Gira de Cura', 'icon': Icons.heart_broken},
-    {'text': 'Umbanda Pet', 'icon': Icons.pets},
-    {'text': 'Sagrado Feminino', 'icon': Icons.woman},
-    {'text': 'Gira das Bruxas', 'icon': Icons.star_border_outlined},
+    {'text': 'Jardim de Aruanda', 'icon': 'assets/images/reading.png'},
+    {'text': 'Gira Cigana', 'icon': 'assets/images/fire.png'},
+    {'text': 'Gira de Cura', 'icon': 'assets/images/pray.png'},
+    {'text': 'Umbanda Pet', 'icon': 'assets/images/dog.png'},
+    {'text': 'Sagrado Feminino', 'icon': 'assets/images/flower.png'},
+    {'text': 'Gira das Bruxas', 'icon': 'assets/images/spell-book.png'},
   ];
 }
 
 // Widget para cada item do carrossel
-class CarouselItem extends StatelessWidget {
+class CarouselItem extends StatefulWidget {
   final Map<String, dynamic> item;
 
   const CarouselItem({super.key, required this.item});
 
   @override
+  State<CarouselItem> createState() => _CarouselItemState();
+}
+
+class _CarouselItemState extends State<CarouselItem> {
+  // Índice da mensagem atual
+  int indiceMensagem = 0;
+
+  // Array de mensagens
+  final List<String> mensagens = [
+    'A Umbanda é paz e amor.',
+    'Respeite todas as religiões.',
+    'Acredite no poder da fé.',
+    'A espiritualidade nos conecta.',
+    'A Umbanda acolhe a todos.'
+    'Avante, filhos de fé.'
+  ];
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _handleItemClick(context, item['text']),
+      onTap: () => _handleItemClick(context, widget.item['text']),
       child: Container(
         width: MediaQuery.of(context).size.width,
         margin: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -72,13 +90,13 @@ class CarouselItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              item['text'],
+              widget.item['text'],
               style: const TextStyle(fontSize: 32.0, color: Color(0xFF032156)),
             ),
-            Icon(
-              item['icon'],
-              size: 86.0,
-              color: const Color(0xFF032156),
+            Image.asset(
+              widget.item['icon'], // Usando a imagem PNG
+              width: 86.0,
+              height: 86.0,
             ),
           ],
         ),
@@ -87,13 +105,19 @@ class CarouselItem extends StatelessWidget {
   }
 
   void _handleItemClick(BuildContext context, String itemText) {
+    // Exibe a mensagem atual
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        backgroundColor: const Color(0xFF035653),
-        content: Text('Você clicou em: $itemText'),
+        backgroundColor: const Color(0xFF032156),
+        content: Text(mensagens[indiceMensagem], textAlign: TextAlign.center),
         duration: const Duration(seconds: 2),
       ),
     );
+
+    // Atualiza o índice para a próxima mensagem
+    setState(() {
+      indiceMensagem = (indiceMensagem + 1) % mensagens.length;
+    });
 
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
