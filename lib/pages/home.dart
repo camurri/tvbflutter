@@ -9,6 +9,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         foregroundColor: const Color(0xFF032156),
+
         title: const Text('TVB Digital'),
       ),
       body: Center(

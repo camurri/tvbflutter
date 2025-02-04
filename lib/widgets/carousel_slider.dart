@@ -1,81 +1,88 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:app_tvb/texts/texts.dart';
+import 'package:app_tvb/texts/texts.dart'; // Supondo que este arquivo existe
+
+void main() {
+  runApp(MaterialApp(
+    home: Scaffold(
+      body: CarouselWidget(),
+    ),
+  ));
+}
 
 class CarouselWidget extends StatelessWidget {
-  const CarouselWidget({super.key});
+   CarouselWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<Map<String, dynamic>> itemsGeral = [
-      {'text': 'Como chegar?', 'icon': Icons.location_on},
-      {'text': 'Giras da Semana', 'icon': Icons.access_time_outlined},
-      {'text': 'Pontos do terreiro', 'icon': Icons.library_music},
-      {'text': 'Eventos', 'icon': Icons.event},
-    ];
-
-    List<Map<String, dynamic>> itemsGiras = [
-      {'text': 'Jardim de Aruanda', 'icon': Icons.bedroom_baby_outlined},
-      {'text': 'Gira Cigana', 'icon': Icons.star_border_outlined},
-      {'text': 'Gira de Cura', 'icon': Icons.heart_broken},
-      {'text': 'Umbanda Pet', 'icon': Icons.pets},
-      {'text': 'Sagrado Feminino', 'icon' : Icons.woman},
-      {'text': 'Gira das Bruxas', 'icon': Icons.star_border_outlined}
-    ];
-
     return Center(
       child: Column(
         children: [
-          _buildCarousel(itemsGeral, context),
-          _buildCarousel(itemsGiras, context),
+          DelayedCarousel( // Primeiro carrossel com atraso
+            items: _itemsGeral,
+            delay: const Duration(seconds: 1), // Atraso de 1 segundo
+          ),
+          const SizedBox(height: 20), // Espaço entre os carrosséis
+          DelayedCarousel( // Segundo carrossel com atraso maior
+            items: _itemsGiras,
+            delay: const Duration(seconds: 3), // Atraso de 3 segundos
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildCarousel(
-      List<Map<String, dynamic>> items, BuildContext context) {
-    return CarouselSlider(
-      options: CarouselOptions(
-        height: 250.0,
-        autoPlay: true,
-        enlargeCenterPage: true,
-        aspectRatio: 16 / 9,
-        viewportFraction: 0.8,
-        initialPage: 0,
+  // Lista de itens para o primeiro carrossel
+  final List<Map<String, dynamic>> _itemsGeral = [
+    {'text': 'Como chegar?', 'icon': Icons.location_on},
+    {'text': 'Giras da Semana', 'icon': Icons.access_time_outlined},
+    {'text': 'Pontos do terreiro', 'icon': Icons.library_music},
+    {'text': 'Redes Sociais', 'icon': Icons.facebook},
+  ];
+
+  // Lista de itens para o segundo carrossel
+  final List<Map<String, dynamic>> _itemsGiras = [
+    {'text': 'Jardim de Aruanda', 'icon': Icons.bedroom_baby_outlined},
+    {'text': 'Gira Cigana', 'icon': Icons.star_border_outlined},
+    {'text': 'Gira de Cura', 'icon': Icons.heart_broken},
+    {'text': 'Umbanda Pet', 'icon': Icons.pets},
+    {'text': 'Sagrado Feminino', 'icon': Icons.woman},
+    {'text': 'Gira das Bruxas', 'icon': Icons.star_border_outlined},
+  ];
+}
+
+// Widget para cada item do carrossel
+class CarouselItem extends StatelessWidget {
+  final Map<String, dynamic> item;
+
+  const CarouselItem({super.key, required this.item});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => _handleItemClick(context, item['text']),
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              item['text'],
+              style: const TextStyle(fontSize: 32.0, color: Color(0xFF032156)),
+            ),
+            Icon(
+              item['icon'],
+              size: 86.0,
+              color: const Color(0xFF032156),
+            ),
+          ],
+        ),
       ),
-      items: items.map((item) {
-        return Builder(
-          builder: (BuildContext context) {
-            return GestureDetector(
-              onTap: () => _handleItemClick(context, item['text']),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      item['text'],
-                      style: const TextStyle(
-                          fontSize: 32.0, color: Color(0xFF032156)),
-                    ),
-                    Icon(
-                      item['icon'],
-                      size: 86.0,
-                      color: const Color(0xFF032156),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
-        );
-      }).toList(),
     );
   }
 
@@ -83,14 +90,13 @@ class CarouselWidget extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: const Color(0xFF035653),
-        content: Text('You tapped on: $itemText'),
+        content: Text('Você clicou em: $itemText'),
         duration: const Duration(seconds: 2),
       ),
     );
 
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
-        // ignore: use_build_context_synchronously
         context,
         MaterialPageRoute(
           builder: (context) => DetailPage(title: itemText),
@@ -100,6 +106,40 @@ class CarouselWidget extends StatelessWidget {
   }
 }
 
+// Widget para carrossel com atraso
+class DelayedCarousel extends StatelessWidget {
+  final List<Map<String, dynamic>> items;
+  final Duration delay;
+
+  const DelayedCarousel({super.key, required this.items, required this.delay});
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: Future.delayed(delay),
+      builder: (context, snapshot) {
+        return AnimatedOpacity(
+          opacity: snapshot.connectionState == ConnectionState.done ? 1.0 : 0.0,
+          duration: const Duration(seconds: 1), // Duração da animação
+          child: CarouselSlider(
+            options: CarouselOptions(
+              height: 250.0,
+              reverse: true,
+              autoPlay: true,
+              enlargeCenterPage: true,
+              aspectRatio: 16 / 9,
+              viewportFraction: 0.8,
+              initialPage: 0,
+            ),
+            items: items.map((item) => CarouselItem(item: item)).toList(),
+          ),
+        );
+      },
+    );
+  }
+}
+
+// Página de detalhes
 class DetailPage extends StatelessWidget {
   final String title;
 
@@ -107,78 +147,56 @@ class DetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String imagePath = '';
-    String textContent = '';
+    final Map<String, Map<String, String>> itemDetails = {
+      'Gira Cigana': {
+        'text': texts['Gira Cigana'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/giraCigana.png',
+      },
+      'Umbanda Pet': {
+        'text': texts['Umbanda Pet'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/umbandaPet.png',
+      },
+      'Gira de Cura': {
+        'text': texts['Gira de Cura'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/giraDeCura.png',
+      },
+      'Jardim de Aruanda': {
+        'text': texts['Jardim de Aruanda'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/jardimDeAruanda.png',
+      },
+      'Gira das Bruxas': {
+        'text': texts['Gira das Bruxas'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/giraDasBruxas.png',
+      },
+      'Como chegar?': {
+        'text': texts['Como chegar?'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/logo.png',
+      },
+      'Sagrado Feminino': {
+        'text': texts['Sagrado Feminino'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/sagradoFeminino.png',
+      },
+      'Giras da Semana': {
+        'text': texts['Giras da Semana'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/logo.png',
+      },
+      'Pontos do terreiro': {
+        'text': texts['Pontos do terreiro'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/curimbaSeoSete.png',
+      },
+      'Redes Sociais': {
+        'text': texts['Redes Sociais'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/redesSociais.png',
+      },
+    };
 
-    if (title == 'Gira Cigana') {
-      textContent = texts.containsKey('Gira Cigana')
-          ? texts['Gira Cigana']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/giraCigana.png';
+    final details = itemDetails[title] ?? {
+      'text': 'Texto ainda não implementado',
+      'image': 'assets/images/logo.png', // Imagem padrão
+    };
 
-    } else if (title == 'Umbanda Pet') {
-      textContent = texts.containsKey('Umbanda Pet')
-          ? texts['Umbanda Pet']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
-
-    } else if (title == 'Gira de Cura') {
-      textContent = texts.containsKey('Gira de Cura')
-          ? texts['Gira de Cura']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/giraDeCura.png';
-
-    }
-    else if (title == 'Jardim de Aruanda') {
-      textContent = texts.containsKey('Jardim de Aruanda')
-          ? texts['Jardim de Aruanda']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/jardimDeAruanda.png';
-    }
-
-    else if (title == 'Gira das Bruxas') {
-      textContent = texts.containsKey('Gira das Bruxas')
-          ? texts['Gira das Bruxas']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/giraDasBruxas.png';
-    }
-    else if (title == 'Como chegar?') {
-      textContent = texts.containsKey('Como chegar?')
-          ? texts['Como chegar?']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/logo.png';
-    }
-    else if (title == 'Sagrado Feminino') {
-      textContent = texts.containsKey('Sagrado Feminino')
-          ? texts['Sagrado Feminino']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/sagradoFeminino.png';
-    }
-    else if (title == 'Giras da Semana') {
-      textContent = texts.containsKey('Giras da Semana')
-          ? texts['Giras da Semana']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
-
-    }
-    else if (title == 'Pontos do terreiro') {
-      textContent = texts.containsKey('Pontos do terreiro')
-          ? texts['Pontos do terreiro']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/curimba.png';
-    }
-    else if (title == 'Eventos') {
-      textContent = texts.containsKey('Eventos')
-          ? texts['Eventos']!
-          : 'Texto não encontrado.';
-      imagePath = 'assets/images/umbandaPet.png';
-    }
-
-    else{
-      textContent = texts.containsKey(title)
-          ? texts[title]!
-          : 'Texto ainda não implementado';
-    }
+    String textContent = details['text']!;
+    String imagePath = details['image']!;
 
     return Scaffold(
       appBar: AppBar(title: Text(title)),
@@ -192,20 +210,23 @@ class DetailPage extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
                   child: Image.asset(
-                    // 'assets/images/umbandaPet.jpeg',
                     imagePath,
                     height: 500,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.error); // Fallback para erro
+                    },
                   ),
                 ),
                 const SizedBox(height: 20),
                 Text(
                   textContent,
-                  // texts.containsKey('Gira Cigana') ? texts['Gira Cigana']! : 'Texto não encontrado.',
                   style: const TextStyle(
-                      fontSize: 18, height: 1.5, color: Color(0xFF032156)),
+                    fontSize: 18,
+                    height: 1.5,
+                    color: Color(0xFF032156),
+                  ),
                 ),
-
                 if (title == 'Como chegar?')
                   IconButton(
                     onPressed: () {
@@ -217,9 +238,6 @@ class DetailPage extends StatelessWidget {
                       color: Color(0xFF032156),
                     ),
                   ),
-
-
-
               ],
             ),
           ),

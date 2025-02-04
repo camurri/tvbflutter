@@ -20,16 +20,16 @@ Essa gira ocorre uma vez no mês sempre no primeiro sábado e é divulgado em no
 Mães responsáveis do dia: Mãe Camila e Mãe Jacqueline, início das atividades as 15h.
 ''';
 
-String giraDasBruxas = '''Gira das Bruxas
-A Gira das Bruxas é uma linha de trabalho nova que chegou para ficar. 
+String giraDasBruxas = '''
+A Gira das Bruxas é uma linha nova que chegou para ficar, trabalhando a força e a potência do feminino e honrando as curandeiras. 
 
-Ao contrário do que se pensam por aí, é uma linha maravilhosa e vem para somar e fazer diferente em nosso terreiro, mostrando além de tudo que não temos nenhum tipo de preconceito. 
+Ao contrário do que se pensam por aí, é uma linha maravilhosa e vem para somar e fazer diferença em nosso terreiro, mostrando além de tudo que não temos nenhum tipo de preconceito. 
 
-Nossa gira cigana ocorre sempre na primeira quinta feira do mês. 
+Nossa gira das bruxas  ocorre sempre na primeira quinta feira do mês. 
 
 Abrimos os pontões às 18:30, iniciamos a gira as 19:30 e os portões seram fechados as 20h para a segurança de todos. 
 
-Responsáveis pela gira: Mãe Paula, Mãe Bruna e Mãe Jacqueline, acompanhem nossas redes sociais para saber quando ocorre a gira.
+Responsáveis pela gira: Mãe Paula, Mãe Bruna e Mãe Jacqueline.
 ''';
 
 String giraDeCura = '''
@@ -44,15 +44,17 @@ Mãe responsável do dia: Mãe Hosana, a gira inicia as 19hs.
 
 
 String sagradoFeminino = '''
-O sagrado feminino é uma roda de conversa de mulheres para tratarmos o nosso feminino. 
+O Sagrado Feminino é uma filosofia de vida que valoriza a energia feminina, a ancestralidade e a relação da mulher com a natureza. É um movimento de empoderamento, cura e conexão entre mulheres. 
 
 Mulheres que já foram abusadas, humilhadas, sofreram qualquer tipo de preconceito. 
 
-Nosso lema: mulheres ajudam mulheres e nessas rodas todas falam. 
+Nosso lema: mulheres ajudam mulheres e nessas rodas todas tem lugar de fala. É um espaço sagrado de troca e união!
 
-Trazemos sempre novidades, como roda com o sagrado cacau, roda de conversas com outras mães de santo convidada, roda de ativação da kundalini entre outras. 
+Trazemos sempre novidades, como A Sagrada medicina do Cacau, rodas de meditações ativas, expansão da Kundalini, Yoga, danças, cursos diversos (ervas, cristais, óleos essenciais, etc...)
 
-Responsável pelo sagrado Feminino: Terapeuta Mãe Paula, a roda acontece no primeiro domingo do mês às 9:00.
+Responsável pelo Sagrado Feminino: Terapeuta do desenvolvimento pessoal e Sagrado Feminino Mãe Paula Galati de Oyá.
+
+A roda acontece de acordo com a disponibilidade do terreiro e sempre no domingo às 9h.
 ''';
 
 String umbandaPet = '''
@@ -63,7 +65,7 @@ A umbanda Pet é uma gira voltada para nossos animaizinhos pois eles também pre
 As giras acontece sempre no primeiro domingo do mês, responsável pela Gira: Pai Edson
 ''';
 
-String eventos = '''
+String redesSociais = '''
 Detalhes sobre eventos...
 ''';
 
@@ -76,10 +78,72 @@ String comoChegar = '''
 Rua Meciacú, 145 Vila Ipê, Campinas/SP
 ''';
 
+String girasDaSemana = '''
+Agenda Mensal
+* 1ª semana: Pretos Velhos e Erês
+* 2ª semana: Caboclos e Boiadeiros
+* 3ª Semana: Baianos e Marinheiros
+* 4ª Semana: Esquerda
+
+Atendimento preferencial a idosos, mulheres grávidas ou com crianças de colo, 
+e portadores de necessidades especiais.
+
+⚠️ Não abrimos em feriados ou durante feriados prolongados.
+⚠️ Em caso de condição climática ruim, a gira será cancelada.
+⚠️ As giras podem mudar conforme a necessidade do terreiro.
+🚫 Não agendamos atendimento, nosso atendimento é somente presencial e por ordem de chegada.
+🚫 Não passamos contato particular de nossos membros de forma alguma.
+
+
+Responsáveis pela Gira:
+
+Domingo: Pai Paulo
+Segunda: Mãe Isabella
+Quarta: Pai Ney
+Sexta: Pai Joãozinho 
+Sábado: Mãe Camila 
+
+Umbanda Pet: Pai Edilson
+1° domingo do mês - 10h
+
+Gira de Cura: Mãe Hosana
+1ª terça do mês - 19h
+
+Gira Cigana: Mãe Bruna 
+2ª terça do mês - 19h
+
+Jardim de Aruanda: Mãe Camila e Mãe Jaqueline 
+1° sábado do mês - 15h
+
+Aceitamos doações de alimentos não perecíveis e leite
+
+Pix para ajudar nos custos do terreiro:
+terreirodavobenedita@gmail.com   
+
+👉🏻 Em nossa casa NÃO se faz, amarrações, previsões, adivinhações e nenhum trabalho para atrapalhar outras pessoas.
+
+Nosso atendimento é GRATUITO e todas as pessoas que aqui trabalham são voluntários em nome da Umbanda.
+
+🚫 NÃO É PERMITIDA entrada com boné, gorro, chapéu, capacete, shorts, minissaia, bermudas curtas, roupas justas, decotadas ou qualquer vestimenta que o responsável pela assistência achar inadequado para permanência na casa
+
+Procure usar roupas claras, caso venha direto de outro compromisso, temos jalecos que serão oferecidos, ou você pode solicitá-los.
+
+Durante sua permanência no terreiro, como em outros locais de prática religiosa, pedimos que mantenha uma postura respeitosa, evitando falar alto.
+
+Pedimos aos consulentes que nas oito horas que antecedem os trabalhos, preferencialmente não ingiram bebida alcoólica ou carne vermelha.
+
+Não toque em objetos, guias e imagens rituais sem autorização do dirigente. Não pegue o que não lhe for oferecido.
+
+Em caso de dúvida, fale com os médiuns dos Trabalhos, que estarão na área à frente, trajados com uniforme. 
+
+Agradecemos a compreensão.
+TVB
+''';
+
 
 
 Map<String, String> texts = {
-  'Eventos': 'Detalhes sobre eventos...',
+  'Redes Sociais': 'Detalhe sobre as redes sociais',
   'Gira Cigana': giraCigana,
   'Jardim de Aruanda': jardimAruanda,
   'Gira de Cura': giraDeCura,
@@ -88,5 +152,6 @@ Map<String, String> texts = {
   'Sagrado Feminino' : sagradoFeminino,
   'Pontos do terreiro': pontosDoTerreiro,
   'Como chegar?': comoChegar,
+  'Giras da Semana' : girasDaSemana,
 };
 
