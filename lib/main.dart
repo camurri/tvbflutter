@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'pages/splash.dart';
 import 'pages/theme_notifier.dart';
-import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,6 +42,9 @@ class MyApp extends StatelessWidget {
       iconTheme: const IconThemeData(
         color: Colors.black,
       ),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: const Color(0xFF032156), // Azul no tema claro
+      ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
   }
@@ -61,6 +64,9 @@ class MyApp extends StatelessWidget {
       ),
       iconTheme: const IconThemeData(
         color: Colors.white, // Ícones brancos no tema escuro
+      ),
+      snackBarTheme: SnackBarThemeData(
+        backgroundColor: const Color(0xFF032156), // Azul no SnackBar no tema escuro
       ),
       buttonTheme: ButtonThemeData(
         buttonColor: const Color(0xFF42A5F5),

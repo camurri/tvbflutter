@@ -98,7 +98,7 @@ class _CarouselItemState extends State<CarouselItem> {
           children: [
             Text(
               widget.item['text'],
-              style: TextStyle(fontSize: 32.0, color: textColor), // Usando a cor do tema
+              style: TextStyle(fontSize: 30.0, color: textColor), // Usando a cor do tema
             ),
             Image.asset(
               widget.item['icon'], // Usando a imagem PNG
@@ -121,7 +121,7 @@ class _CarouselItemState extends State<CarouselItem> {
       ),
     );
 
-    // Atualiza o índice para a próxima mensagem
+    // Atualiza o índice para a próxima mensagem, independentemente do item
     setState(() {
       indiceMensagem = (indiceMensagem + 1) % mensagens.length;
     });
