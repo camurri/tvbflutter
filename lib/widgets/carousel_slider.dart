@@ -37,6 +37,7 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Como chegar?', 'icon': 'assets/images/road.png'},
     {'text': 'Giras da Semana', 'icon': 'assets/images/schedule.png'},
     {'text': 'Pontos do terreiro', 'icon': 'assets/images/african-drum.png'},
+    {'text': 'Orações', 'icon': 'assets/images/pray.png'},
     {'text': 'Redes Sociais', 'icon': 'assets/images/social-media.png'},
   ];
 
@@ -212,6 +213,10 @@ class DetailPage extends StatelessWidget {
         'text': texts['Redes Sociais'] ?? 'Texto não encontrado.',
         'image': 'assets/images/redesSociais.png',
       },
+      'Orações': {
+        'text': texts['Orações'] ?? 'Texto não encontrado.',
+        'image': 'assets/images/pray.png',
+      },
     };
 
     final details = itemDetails[title] ?? {
@@ -235,7 +240,7 @@ class DetailPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.0),
                   child: Image.asset(
                     imagePath,
-                    height: 500,
+                    height: 400,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons.error); // Fallback para erro
@@ -246,7 +251,7 @@ class DetailPage extends StatelessWidget {
                 Text(
                   textContent,
                   style: const TextStyle(
-                    fontSize: 18,
+                    fontSize: 22,
                     height: 1.5,
                     color: Color(0xFF032156),
                   ),
@@ -262,6 +267,10 @@ class DetailPage extends StatelessWidget {
                       color: Color(0xFF032156),
                     ),
                   ),
+
+
+
+
               ],
             ),
           ),

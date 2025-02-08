@@ -75,7 +75,9 @@ Em desenvolvimento!.
 ''';
 
 String comoChegar = '''
-Rua Meciacú, 145 Vila Ipê, Campinas/SP
+Rua Meciacú, 185 Vila Ipê, Campinas/SP
+Como chegar: Pegar ônibus 408 Parque Jambeiro em frente a Loja Claro
+Na Francisco Glicério, Centro
 ''';
 
 String girasDaSemana = '''
