@@ -4,6 +4,9 @@ import 'package:app_tvb/texts/texts.dart'; // Supondo que este arquivo existe
 
 void main() {
   runApp(MaterialApp(
+    theme: ThemeData.light(), // Tema claro
+    darkTheme: ThemeData.dark(), // Tema escuro
+    themeMode: ThemeMode.system, // Para usar o tema do sistema
     home: Scaffold(
       body: CarouselWidget(),
     ),
@@ -72,12 +75,15 @@ class _CarouselItemState extends State<CarouselItem> {
     'Respeite todas as religiões.',
     'Acredite no poder da fé.',
     'A espiritualidade nos conecta.',
-    'A Umbanda acolhe a todos.'
+    'A Umbanda acolhe a todos.',
     'Avante, filhos de fé.'
   ];
 
   @override
   Widget build(BuildContext context) {
+    // Obter a cor do texto de acordo com o tema atual
+    Color textColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+
     return GestureDetector(
       onTap: () => _handleItemClick(context, widget.item['text']),
       child: Container(
@@ -92,7 +98,7 @@ class _CarouselItemState extends State<CarouselItem> {
           children: [
             Text(
               widget.item['text'],
-              style: const TextStyle(fontSize: 32.0, color: Color(0xFF032156)),
+              style: TextStyle(fontSize: 32.0, color: textColor), // Usando a cor do tema
             ),
             Image.asset(
               widget.item['icon'], // Usando a imagem PNG
@@ -250,10 +256,10 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 Text(
                   textContent,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 22,
                     height: 1.5,
-                    color: Color(0xFF032156),
+                    color: Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black,
                   ),
                 ),
                 if (title == 'Como chegar?')
@@ -267,10 +273,6 @@ class DetailPage extends StatelessWidget {
                       color: Color(0xFF032156),
                     ),
                   ),
-
-
-
-
               ],
             ),
           ),
@@ -279,4 +281,3 @@ class DetailPage extends StatelessWidget {
     );
   }
 }
-

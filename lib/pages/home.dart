@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
+import 'package:provider/provider.dart';
+import 'theme_notifier.dart'; // Certifique-se de importar o ThemeNotifier
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -11,11 +13,11 @@ class Home extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: const Color(0xFF032156),
+        foregroundColor: const Color(0xFFFFFFFF),
         title: Column(
           mainAxisSize: MainAxisSize.min, // Evita ocupar espaço extra
           children: [
-            SizedBox(height: 6), // Ajuste a altura conforme necessário
+            SizedBox(height: 7), // Ajuste a altura conforme necessário
             const Text(
               'TVB Digital',
               style: TextStyle(fontSize: 20), // Ajuste o tamanho se necessário
@@ -23,13 +25,23 @@ class Home extends StatelessWidget {
           ],
         ),
         centerTitle: true, // Mantém centralizado
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.brightness_6),
+            onPressed: () {
+              // Alternar entre tema claro e escuro
+              final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
+              themeNotifier.toggleTheme();
+            },
+          ),
+        ],
       ),
 
-      body: LayoutBuilder( // Adicionado para melhor controle responsivo
+      body: LayoutBuilder(
         builder: (context, constraints) {
           double logoSize = constraints.maxWidth * 0.3;
-          if (constraints.maxWidth < 600) logoSize = constraints.maxWidth * 0.5; // Aumenta em telas pequenas
-          if (constraints.maxWidth > 1200) logoSize = constraints.maxWidth * 0.2; // Reduz em telas grandes
+          if (constraints.maxWidth < 600) logoSize = constraints.maxWidth * 0.5;
+          if (constraints.maxWidth > 1200) logoSize = constraints.maxWidth * 0.2;
 
           return SingleChildScrollView(
             child: Center(
@@ -50,11 +62,10 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.05),
-                    // Carrossel responsivo
                     ConstrainedBox(
                       constraints: BoxConstraints(
-                        maxWidth: 800, // Define um limite para telas grandes
-                        minWidth: 300, // Mantém um tamanho mínimo
+                        maxWidth: 800,
+                        minWidth: 300,
                       ),
                       child: CarouselWidget(),
                     ),
