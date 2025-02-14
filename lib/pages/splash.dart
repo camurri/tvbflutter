@@ -12,10 +12,8 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
-
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
@@ -36,11 +34,13 @@ class _SplashState extends State<Splash> {
           tag: 'logo',
           flightShuttleBuilder: (context, animation, direction, fromContext, toContext) {
             return ScaleTransition(
-              scale: animation.drive(Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInOut))),
-              child: Image.asset('assets/images/logo.png', width: screenWidth * 0.6),
+              scale: animation.drive(
+                Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInOut)),
+              ),
+              child: Image.asset('assets/images/bkg.png', width: screenWidth * 0.6),
             );
           },
-          child: Image.asset('assets/images/logo.png', width: screenWidth * 0.6),
+          child: Image.asset('assets/images/bkg.png', width: screenWidth * 0.6),
         ),
       ),
     );
