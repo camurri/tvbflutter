@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'pages/splash.dart';
 import 'pages/theme_notifier.dart';
@@ -73,6 +74,37 @@ class MyApp extends StatelessWidget {
         textTheme: ButtonTextTheme.primary,
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
+    );
+  }
+}
+
+class ThemeSensitiveSvgImage extends StatelessWidget {
+  final String assetPath;
+  final double size;
+
+  const ThemeSensitiveSvgImage({
+    Key? key,
+    required this.assetPath,
+    required this.size,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Verificar o tema atual
+    bool isDarkMode = Theme.of(context).brightness == Brightness.dark;
+
+    // Modificar o asset path ou a cor conforme o tema
+    String imagePath = isDarkMode ? '$assetPath-dark.svg' : '$assetPath-light.svg';
+
+    // Ajuste para usar colorFilter em vez de color
+    return SvgPicture.asset(
+      imagePath,
+      width: size,
+      height: size,
+      colorFilter: ColorFilter.mode(
+        isDarkMode ? Colors.white : const Color(0xFF032156), // Cor do SVG dependendo do tema
+        BlendMode.srcIn, // Combina a cor com a imagem
+      ),
     );
   }
 }

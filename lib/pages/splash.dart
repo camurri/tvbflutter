@@ -50,7 +50,7 @@ class _SplashState extends State<Splash> {
             );
           },
           child: SvgPicture.asset(
-            'assets/images/svg/logo.svg',
+            'assets/images/bkg.svg',
             width: 200,  // Tamanho fixo para o logo
             height: 200,
             colorFilter: ColorFilter.mode(

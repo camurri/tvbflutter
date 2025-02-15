@@ -29,7 +29,7 @@ class CarouselWidget extends StatelessWidget {
           const SizedBox(height: 20), // Espaço entre os carrosséis
           DelayedCarousel( // Segundo carrossel com atraso maior
             items: _itemsGiras,
-            delay: const Duration(seconds: 3), // Atraso de 3 segundos
+            delay: const Duration(seconds: 1), // Atraso de 3 segundos
           ),
         ],
       ),
