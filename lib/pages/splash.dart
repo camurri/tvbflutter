@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'home.dart';
 
 class Splash extends StatefulWidget {
@@ -12,6 +13,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
+    // Atraso de 3 segundos para navegação
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
       Navigator.pushReplacement(
@@ -37,10 +39,25 @@ class _SplashState extends State<Splash> {
               scale: animation.drive(
                 Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInOut)),
               ),
-              child: Image.asset('assets/images/bkg.png', width: screenWidth * 0.6),
+              child: SvgPicture.asset(
+                'assets/images/svg/logo.svg',
+                width: screenWidth * 0.6,  // Ajusta o tamanho com base na largura da tela
+                colorFilter: ColorFilter.mode(
+                  Theme.of(context).primaryColor,  // Cor baseada no tema
+                  BlendMode.srcIn,  // Aplica a cor ao SVG
+                ),
+              ),
             );
           },
-          child: Image.asset('assets/images/bkg.png', width: screenWidth * 0.6),
+          child: SvgPicture.asset(
+            'assets/images/svg/logo.svg',
+            width: 200,  // Tamanho fixo para o logo
+            height: 200,
+            colorFilter: ColorFilter.mode(
+              Theme.of(context).primaryColor,  // Pega a cor do tema
+              BlendMode.srcIn,  // Aplica a cor ao SVG
+            ),
+          ),
         ),
       ),
     );

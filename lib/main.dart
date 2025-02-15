@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         color: Colors.black,
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: const Color(0xFF032156), // Azul no tema claro
+        backgroundColor: const Color(0xFF032156),
       ),
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
@@ -54,19 +54,19 @@ class MyApp extends StatelessWidget {
       brightness: Brightness.dark,
       primaryColor: const Color(0xFF90CAF9),
       hintColor: const Color(0xFF42A5F5),
-      scaffoldBackgroundColor: const Color(0xFF032156), // Azul escuro no fundo
+      scaffoldBackgroundColor: const Color(0xFF032156),
       textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: Colors.white), // Texto branco no tema escuro
+        bodyLarge: TextStyle(color: Colors.white),
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: const Color(0xFF1F1F1F),
         foregroundColor: Colors.white,
       ),
       iconTheme: const IconThemeData(
-        color: Colors.white, // Ícones brancos no tema escuro
+        color: Colors.white,
       ),
       snackBarTheme: SnackBarThemeData(
-        backgroundColor: const Color(0xFF032156), // Azul no SnackBar no tema escuro
+        backgroundColor: const Color(0xFF032156),
       ),
       buttonTheme: ButtonThemeData(
         buttonColor: const Color(0xFF42A5F5),

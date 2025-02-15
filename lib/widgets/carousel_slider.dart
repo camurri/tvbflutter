@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart'; // Importando a biblioteca flutter_svg
 import 'package:app_tvb/texts/texts.dart'; // Supondo que este arquivo existe
 
 void main() {
@@ -37,21 +38,21 @@ class CarouselWidget extends StatelessWidget {
 
   // Lista de itens para o primeiro carrossel
   final List<Map<String, dynamic>> _itemsGeral = [
-    {'text': 'Como chegar?', 'icon': 'assets/images/road.png'},
-    {'text': 'Giras da Semana', 'icon': 'assets/images/schedule.png'},
-    {'text': 'Pontos do terreiro', 'icon': 'assets/images/african-drum.png'},
-    {'text': 'Orações', 'icon': 'assets/images/pray.png'},
-    {'text': 'Redes Sociais', 'icon': 'assets/images/social-media.png'},
+    {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
+    {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
+    {'text': 'Pontos do terreiro', 'icon': 'assets/images/svg/african-drum.svg'},
+    {'text': 'Orações', 'icon': 'assets/images/svg/pray.svg'},
+    {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
   ];
 
   // Lista de itens para o segundo carrossel
   final List<Map<String, dynamic>> _itemsGiras = [
-    {'text': 'Jardim de Aruanda', 'icon': 'assets/images/reading.png'},
-    {'text': 'Gira Cigana', 'icon': 'assets/images/fire.png'},
-    {'text': 'Gira de Cura', 'icon': 'assets/images/pray.png'},
-    {'text': 'Umbanda Pet', 'icon': 'assets/images/dog.png'},
-    {'text': 'Sagrado Feminino', 'icon': 'assets/images/flower.png'},
-    {'text': 'Gira das Bruxas', 'icon': 'assets/images/spell-book.png'},
+    {'text': 'Jardim de Aruanda', 'icon': 'assets/images/svg/reading.svg'},
+    {'text': 'Gira Cigana', 'icon': 'assets/images/svg/fire.svg'},
+    {'text': 'Gira de Cura', 'icon': 'assets/images/svg/pray.svg'},
+    {'text': 'Umbanda Pet', 'icon': 'assets/images/svg/dog.svg'},
+    {'text': 'Sagrado Feminino', 'icon': 'assets/images/svg/flower.svg'},
+    {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
   ];
 }
 
@@ -83,6 +84,9 @@ class _CarouselItemState extends State<CarouselItem> {
   Widget build(BuildContext context) {
     // Obter a cor do texto de acordo com o tema atual
     Color textColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+    Color iconColor = Theme.of(context).brightness == Brightness.light
+        ? Color(0xFF032156) // Azul mais escuro para tema claro
+        : Colors.white; // Branco para tema escuro
 
     return GestureDetector(
       onTap: () => _handleItemClick(context, widget.item['text']),
@@ -100,10 +104,11 @@ class _CarouselItemState extends State<CarouselItem> {
               widget.item['text'],
               style: TextStyle(fontSize: 30.0, color: textColor), // Usando a cor do tema
             ),
-            Image.asset(
-              widget.item['icon'], // Usando a imagem PNG
+            SvgPicture.asset(
+              widget.item['icon'], // Usando a imagem SVG
               width: 86.0,
               height: 86.0,
+              color: iconColor, // A cor dinâmica do ícone baseada no tema
             ),
           ],
         ),
@@ -181,53 +186,53 @@ class DetailPage extends StatelessWidget {
     final Map<String, Map<String, String>> itemDetails = {
       'Gira Cigana': {
         'text': texts['Gira Cigana'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/giraCigana.png',
+        'image': 'assets/images/svg/giraCigana.svg',
       },
       'Umbanda Pet': {
         'text': texts['Umbanda Pet'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/umbandaPet.png',
+        'image': 'assets/images/svg/umbandaPet.svg',
       },
       'Gira de Cura': {
         'text': texts['Gira de Cura'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/giraDeCura.png',
+        'image': 'assets/images/svg/giraDeCura.svg',
       },
       'Jardim de Aruanda': {
         'text': texts['Jardim de Aruanda'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/jardimDeAruanda.png',
+        'image': 'assets/images/svg/jardimDeAruanda.svg',
       },
       'Gira das Bruxas': {
         'text': texts['Gira das Bruxas'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/giraDasBruxas.png',
+        'image': 'assets/images/svg/giraDasBruxas.svg',
       },
       'Como chegar?': {
         'text': texts['Como chegar?'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/logo.png',
+        'image': 'assets/images/svg/logo.svg',
       },
       'Sagrado Feminino': {
         'text': texts['Sagrado Feminino'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/sagradoFeminino.png',
+        'image': 'assets/images/svg/sagradoFeminino.svg',
       },
       'Giras da Semana': {
         'text': texts['Giras da Semana'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/logo.png',
+        'image': 'assets/images/svg/logo.svg',
       },
       'Pontos do terreiro': {
         'text': texts['Pontos do terreiro'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/curimbaSeoSete.png',
+        'image': 'assets/images/svg/curimbaSeoSete.svg',
       },
       'Redes Sociais': {
         'text': texts['Redes Sociais'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/redesSociais.png',
+        'image': 'assets/images/svg/redesSociais.svg',
       },
       'Orações': {
         'text': texts['Orações'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/pray.png',
+        'image': 'assets/images/svg/pray.svg',
       },
     };
 
     final details = itemDetails[title] ?? {
       'text': 'Texto ainda não implementado',
-      'image': 'assets/images/logo.png', // Imagem padrão
+      'image': 'assets/images/svg/logo.svg', // Imagem padrão
     };
 
     String textContent = details['text']!;
@@ -244,10 +249,13 @@ class DetailPage extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20.0),
-                  child: Image.asset(
+                  child: SvgPicture.asset(
                     imagePath,
                     height: 400,
                     fit: BoxFit.cover,
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Color(0xFF032156) // Azul mais escuro para tema claro
+                        : Colors.white, // Branco para tema escuro
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons.error); // Fallback para erro
                     },

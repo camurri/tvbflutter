@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
-import 'theme_notifier.dart'; // Certifique-se de importar o ThemeNotifier
+import 'theme_notifier.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -15,21 +16,20 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         foregroundColor: const Color(0xFFFFFFFF),
         title: Column(
-          mainAxisSize: MainAxisSize.min, // Evita ocupar espaço extra
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 7), // Ajuste a altura conforme necessário
+            SizedBox(height: 7),
             const Text(
               'TVB Digital',
-              style: TextStyle(fontSize: 20), // Ajuste o tamanho se necessário
+              style: TextStyle(fontSize: 20),
             ),
           ],
         ),
-        centerTitle: true, // Mantém centralizado
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),
             onPressed: () {
-              // Alternar entre tema claro e escuro
               final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
               themeNotifier.toggleTheme();
             },
@@ -55,10 +55,17 @@ class Home extends StatelessWidget {
                     SizedBox(height: screenHeight * 0.02),
                     Hero(
                       tag: 'logo',
-                      child: Image.asset(
-                        'assets/images/logo.png',
-                        width: logoSize,
-                        fit: BoxFit.contain,
+                      child: SvgPicture.asset(
+                        // Imagem SVG com base no tema
+                        Theme.of(context).brightness == Brightness.light
+                            ? 'assets/images/svg/logo.svg'  // Versão clara
+                            : 'assets/images/svg/logo.svg',  // Versão escura
+                        width: 150,
+                        height: 150,
+                        colorFilter: ColorFilter.mode(
+                          Theme.of(context).colorScheme.primary, // Cor do tema
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                     SizedBox(height: screenHeight * 0.05),
@@ -67,7 +74,7 @@ class Home extends StatelessWidget {
                         maxWidth: 800,
                         minWidth: 300,
                       ),
-                      child: CarouselWidget(),
+                      child: CarouselWidget(),  // Certifique-se que seu widget de carousel está bem dimensionado
                     ),
                     SizedBox(height: screenHeight * 0.05),
                   ],
