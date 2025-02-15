@@ -102,7 +102,7 @@ class ThemeSensitiveSvgImage extends StatelessWidget {
       width: size,
       height: size,
       colorFilter: ColorFilter.mode(
-        isDarkMode ? Colors.white : const Color(0xFF032156), // Cor do SVG dependendo do tema
+        isDarkMode ? Color(0xFFFFFFFF) : const Color(0xFF032156), // Cor do SVG dependendo do tema
         BlendMode.srcIn, // Combina a cor com a imagem
       ),
     );

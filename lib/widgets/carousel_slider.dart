@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Importando a biblioteca flutter_svg
-import 'package:app_tvb/texts/texts.dart'; // Supondo que este arquivo existe
-
-void main() {
-  runApp(MaterialApp(
-    theme: ThemeData.light(), // Tema claro
-    darkTheme: ThemeData.dark(), // Tema escuro
-    themeMode: ThemeMode.system, // Para usar o tema do sistema
-    home: Scaffold(
-      body: CarouselWidget(),
-    ),
-  ));
-}
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:app_tvb/texts/texts.dart'; // Verifique se o caminho da importação está correto
 
 class CarouselWidget extends StatelessWidget {
   CarouselWidget({super.key});
@@ -22,21 +11,19 @@ class CarouselWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          DelayedCarousel( // Primeiro carrossel com atraso
+          DelayedCarousel(
             items: _itemsGeral,
-            delay: const Duration(seconds: 1), // Atraso de 1 segundo
+            delay: const Duration(milliseconds: 500),
           ),
-          const SizedBox(height: 20), // Espaço entre os carrosséis
-          DelayedCarousel( // Segundo carrossel com atraso maior
+          DelayedCarousel(
             items: _itemsGiras,
-            delay: const Duration(seconds: 1), // Atraso de 3 segundos
+            delay: const Duration(milliseconds: 500),
           ),
         ],
       ),
     );
   }
 
-  // Lista de itens para o primeiro carrossel
   final List<Map<String, dynamic>> _itemsGeral = [
     {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
     {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
@@ -45,7 +32,6 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
   ];
 
-  // Lista de itens para o segundo carrossel
   final List<Map<String, dynamic>> _itemsGiras = [
     {'text': 'Jardim de Aruanda', 'icon': 'assets/images/svg/reading.svg'},
     {'text': 'Gira Cigana', 'icon': 'assets/images/svg/fire.svg'},
@@ -56,21 +42,17 @@ class CarouselWidget extends StatelessWidget {
   ];
 }
 
-// Widget para cada item do carrossel
 class CarouselItem extends StatefulWidget {
   final Map<String, dynamic> item;
 
   const CarouselItem({super.key, required this.item});
-
   @override
   State<CarouselItem> createState() => _CarouselItemState();
 }
 
 class _CarouselItemState extends State<CarouselItem> {
-  // Índice da mensagem atual
   int indiceMensagem = 0;
 
-  // Array de mensagens
   final List<String> mensagens = [
     'A Umbanda é paz e amor.',
     'Respeite todas as religiões.',
@@ -82,11 +64,10 @@ class _CarouselItemState extends State<CarouselItem> {
 
   @override
   Widget build(BuildContext context) {
-    // Obter a cor do texto de acordo com o tema atual
     Color textColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
     Color iconColor = Theme.of(context).brightness == Brightness.light
-        ? Color(0xFF032156) // Azul mais escuro para tema claro
-        : Colors.white; // Branco para tema escuro
+        ? Color(0xFF032156)
+        : Color(0xFFFFFFFF);
 
     return GestureDetector(
       onTap: () => _handleItemClick(context, widget.item['text']),
@@ -102,13 +83,13 @@ class _CarouselItemState extends State<CarouselItem> {
           children: [
             Text(
               widget.item['text'],
-              style: TextStyle(fontSize: 30.0, color: textColor), // Usando a cor do tema
+              style: TextStyle(fontSize: 30.0, color: textColor),
             ),
             SvgPicture.asset(
-              widget.item['icon'], // Usando a imagem SVG
+              widget.item['icon'],
               width: 86.0,
               height: 86.0,
-              color: iconColor, // A cor dinâmica do ícone baseada no tema
+              color: iconColor,
             ),
           ],
         ),
@@ -117,32 +98,43 @@ class _CarouselItemState extends State<CarouselItem> {
   }
 
   void _handleItemClick(BuildContext context, String itemText) {
-    // Exibe a mensagem atual
+    // Exibe a mensagem atual do snackbar
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: const Color(0xFF032156),
         content: Text(mensagens[indiceMensagem], textAlign: TextAlign.center),
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 1),
       ),
     );
 
-    // Atualiza o índice para a próxima mensagem, independentemente do item
     setState(() {
       indiceMensagem = (indiceMensagem + 1) % mensagens.length;
     });
+
+    // Obtém o conteúdo de texto e imagem a partir do mapa de textos
+    String textContent = texts[itemText] ?? 'Texto não encontrado em (detail_page.dart)';
+    String imagePath = 'assets/images/svg/logo.svg'; // Fallback de imagem
+
+    // Lógica para pegar dados do item
+    if (itemText == 'Jardim de Aruanda') {
+      imagePath = 'assets/images/svg/dog.svg'; // Ajuste da imagem caso o item seja Jardim de Aruanda
+    }
 
     Future.delayed(const Duration(milliseconds: 500), () {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailPage(title: itemText),
+          builder: (context) => DetailPage(
+            title: itemText,
+            textContent: textContent,
+            imagePath: imagePath,
+          ),
         ),
       );
     });
   }
 }
 
-// Widget para carrossel com atraso
 class DelayedCarousel extends StatelessWidget {
   final List<Map<String, dynamic>> items;
   final Duration delay;
@@ -156,7 +148,7 @@ class DelayedCarousel extends StatelessWidget {
       builder: (context, snapshot) {
         return AnimatedOpacity(
           opacity: snapshot.connectionState == ConnectionState.done ? 1.0 : 0.0,
-          duration: const Duration(seconds: 1), // Duração da animação
+          duration: const Duration(seconds: 1),
           child: CarouselSlider(
             options: CarouselOptions(
               height: 250.0,
@@ -175,69 +167,15 @@ class DelayedCarousel extends StatelessWidget {
   }
 }
 
-// Página de detalhes
 class DetailPage extends StatelessWidget {
   final String title;
+  final String textContent;
+  final String imagePath;
 
-  const DetailPage({super.key, required this.title});
+  const DetailPage({super.key, required this.title, required this.textContent, required this.imagePath});
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Map<String, String>> itemDetails = {
-      'Gira Cigana': {
-        'text': texts['Gira Cigana'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/giraCigana.svg',
-      },
-      'Umbanda Pet': {
-        'text': texts['Umbanda Pet'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/umbandaPet.svg',
-      },
-      'Gira de Cura': {
-        'text': texts['Gira de Cura'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/giraDeCura.svg',
-      },
-      'Jardim de Aruanda': {
-        'text': texts['Jardim de Aruanda'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/jardimDeAruanda.svg',
-      },
-      'Gira das Bruxas': {
-        'text': texts['Gira das Bruxas'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/giraDasBruxas.svg',
-      },
-      'Como chegar?': {
-        'text': texts['Como chegar?'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/logo.svg',
-      },
-      'Sagrado Feminino': {
-        'text': texts['Sagrado Feminino'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/sagradoFeminino.svg',
-      },
-      'Giras da Semana': {
-        'text': texts['Giras da Semana'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/logo.svg',
-      },
-      'Pontos do terreiro': {
-        'text': texts['Pontos do terreiro'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/curimbaSeoSete.svg',
-      },
-      'Redes Sociais': {
-        'text': texts['Redes Sociais'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/redesSociais.svg',
-      },
-      'Orações': {
-        'text': texts['Orações'] ?? 'Texto não encontrado.',
-        'image': 'assets/images/svg/pray.svg',
-      },
-    };
-
-    final details = itemDetails[title] ?? {
-      'text': 'Texto ainda não implementado',
-      'image': 'assets/images/svg/logo.svg', // Imagem padrão
-    };
-
-    String textContent = details['text']!;
-    String imagePath = details['image']!;
-
     return Scaffold(
       appBar: AppBar(title: Text(title)),
       body: Padding(
@@ -254,10 +192,10 @@ class DetailPage extends StatelessWidget {
                     height: 400,
                     fit: BoxFit.cover,
                     color: Theme.of(context).brightness == Brightness.light
-                        ? Color(0xFF032156) // Azul mais escuro para tema claro
-                        : Colors.white, // Branco para tema escuro
+                        ? Color(0xFF032156)
+                        : Color(0xFFFFFFFF),
                     errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons.error); // Fallback para erro
+                      return const Icon(Icons.error);
                     },
                   ),
                 ),
