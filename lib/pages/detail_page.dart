@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:app_tvb/texts/texts.dart'; // Importação para o dicionário de textos (se necessário)
+
 
 // Refatoração do Widget CarouselWidget
 class CarouselWidget extends StatelessWidget {
@@ -13,13 +13,13 @@ class CarouselWidget extends StatelessWidget {
       child: Column(
         children: [
           DelayedCarousel(
-            items: _itemsGeral,
-            delay: const Duration(milliseconds: 500), // Atraso de 500ms
+            items: _itemsGeral, // carregando a lista superior
+            delay: const Duration(milliseconds: 500), // Atraso de arranque
           ),
           // const SizedBox(height: 10), // Espaço entre os carrosséis (opcional)
           DelayedCarousel(
-            items: _itemsGiras,
-            delay: const Duration(milliseconds: 500), // Atraso de 500ms
+            items: _itemsGiras, // carregando a lista inferior
+            delay: const Duration(milliseconds: 500), // Atraso de arranque
           ),
         ],
       ),

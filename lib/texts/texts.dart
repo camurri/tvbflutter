@@ -80,6 +80,14 @@ Como chegar: Pegar ônibus 408 Parque Jambeiro em frente a Loja Claro
 Na Francisco Glicério, Centro
 ''';
 
+String medicinasXamanicas = '''
+Ainda não tem texto <> implementar em (texts.dart)
+''';
+
+String tvbVerde = '''
+Ainda não tem texto <> implementar em (texts.dart)
+''';
+
 String girasDaSemana = '''
 Agenda Mensal
 * 1ª semana: Pretos Velhos e Erês
@@ -142,6 +150,10 @@ Agradecemos a compreensão.
 TVB
 ''';
 
+String normasEregras = '''
+Adicionar regras
+''';
+
 
 
 Map<String, String> texts = {
@@ -152,7 +164,7 @@ Map<String, String> texts = {
   'Umbanda Pet': umbandaPet,
   'Gira das Bruxas': giraDasBruxas,
   'Sagrado Feminino' : sagradoFeminino,
-  'Pontos do terreiro': pontosDoTerreiro,
+  'Pontos do Terreiro': pontosDoTerreiro,
   'Como chegar?': comoChegar,
   'Giras da Semana' : girasDaSemana,
 };
