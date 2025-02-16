@@ -53,18 +53,10 @@
       {'text': 'Umbanda Pet', 'icon': 'assets/images/svg/dog.svg'},
       {'text': 'Sagrado Feminino', 'icon': 'assets/images/svg/flower.svg'},
       {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
-      {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
-      {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
+      {'text': 'Medicinas', 'icon': 'assets/images/svg/logo.svg'},
+      {'text': 'TVB Verde', 'icon': 'assets/images/svg/logo.svg'},
 
     ];
-
-
-    //Aqui trata-se de imagens de uso geral do aplicativo
-  final List<Map<String, dynamic>> _iconesGerais = [
-    {'text': 'Regras', 'icon': 'assets/images/svg/politica.svg'},
-  ];
-
-
   }
   /////////////////////////////////////////////////////////////////////////////
   class CarouselItem extends StatefulWidget {
