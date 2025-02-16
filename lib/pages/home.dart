@@ -60,8 +60,8 @@ class Home extends StatelessWidget {
                         Theme.of(context).brightness == Brightness.light
                             ? 'assets/images/svg/logo.svg'  // Versão clara
                             : 'assets/images/svg/logo.svg',  // Versão escura
-                        width: 150, //largura do logo no topo da tela
-                        height: 150,// altura do logo no topo da tela
+                        width: 100, //largura do logo no topo da tela
+                        height: 100,// altura do logo no topo da tela
                         colorFilter: ColorFilter.mode(
                           Theme.of(context).colorScheme.primary, // Cor do tema
                           BlendMode.srcIn,
