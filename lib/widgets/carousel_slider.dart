@@ -53,8 +53,8 @@
       {'text': 'Umbanda Pet', 'icon': 'assets/images/svg/dog.svg'},
       {'text': 'Sagrado Feminino', 'icon': 'assets/images/svg/flower.svg'},
       {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
-      {'text': 'Medicinas', 'icon': 'assets/images/svg/green.svg'},
-      {'text': 'TVB Verde', 'icon': 'assets/images/svg/cherokee.svg'},
+      {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
+      {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
 
     ];
   }
