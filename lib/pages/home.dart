@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           children: [
             SizedBox(height: 20), //Posição do texto da AppBar em relação ao topo
             const Text(
-              'TVB Digital',
+              'TVB Digital®',
               style: TextStyle(fontSize: 20),
             ),
           ],

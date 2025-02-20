@@ -104,7 +104,7 @@
               //////////////////////////////////////////////////////////////
               Text(
                 widget.item['text'],
-                style: TextStyle(fontSize: 30.0, color: textColor),
+                style: TextStyle(fontSize: 26.4, color: textColor),
               ),
 
               /////////////////////////////////////////////////////////////
@@ -167,9 +167,9 @@
       else if(itemText == 'Gira das Bruxas')
         imagePath = 'assets/images/png/giraDasBruxas.png';
       else if(itemText == 'TVB Verde')
-        imagePath = 'assets/images/png/logo.png';
+        imagePath = 'assets/images/png/tvbVerde.png';
       else if(itemText == 'Medicinas')
-        imagePath = 'assets/images/png/logo.png';
+        imagePath = 'assets/images/png/medicinas.png';
       else if(itemText == 'Pontos do Terreiro')
         imagePath = 'assets/images/png/pontosDoTerreiro.png';
       else
