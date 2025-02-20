@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
           children: [
             SizedBox(height: 20), //Posição do texto da AppBar em relação ao topo
             const Text(
-              'TVB Digital®',
+              'TVB Digital',
               style: TextStyle(fontSize: 20),
             ),
           ],
@@ -28,7 +28,7 @@ class Home extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.brightness_6),
+            icon: const Icon(Icons.brightness_4_outlined),
             onPressed: () {
               final themeNotifier = Provider.of<ThemeNotifier>(context, listen: false);
               themeNotifier.toggleTheme();

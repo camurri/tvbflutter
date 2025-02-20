@@ -55,6 +55,7 @@
       {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
       {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
       {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
+      {'text': 'Nossa História', 'icon': 'assets/images/svg/logo.svg'},
 
     ];
   }
@@ -172,6 +173,8 @@
         imagePath = 'assets/images/png/medicinas.png';
       else if(itemText == 'Pontos do Terreiro')
         imagePath = 'assets/images/png/pontosDoTerreiro.png';
+      else if(itemText == 'Nossa História')
+        imagePath = 'assets/images/png/bkg.png';
       else
         imagePath = 'assets/images/svg/logo.svg';
 
@@ -236,7 +239,7 @@
                 height: 250.0,
                 reverse: true,
                 autoPlay: true,
-                enlargeCenterPage: true,
+                enlargeCenterPage: false,
                 aspectRatio: 16 / 9,
                 viewportFraction: 0.8,
                 initialPage: 0,
