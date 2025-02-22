@@ -4,7 +4,6 @@ import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import '../widgets/mediunDivider.dart';
 import 'theme_notifier.dart';
-import 'package:app_tvb/widgets/weeksEventsScreen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});

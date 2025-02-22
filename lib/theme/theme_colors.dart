@@ -12,7 +12,7 @@ ThemeData buildLightTheme() {
       foregroundColor: Colors.white,
     ),
     iconTheme: const IconThemeData(
-      color: Colors.black,
+      color: const Color(0xFFD31313),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFF032156),
@@ -35,7 +35,7 @@ ThemeData buildDarkTheme() {
       foregroundColor: Colors.white,
     ),
     iconTheme: const IconThemeData(
-      color: Colors.white,
+      color: const Color(0xFFD31313),
     ),
     snackBarTheme: SnackBarThemeData(
       backgroundColor: const Color(0xFF032156),

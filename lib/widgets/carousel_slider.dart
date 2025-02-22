@@ -309,8 +309,8 @@ class DetailPage extends StatelessWidget {
 
                 //Verifica se a lógica do mapa pode ou não ser carregada
                 if (title == 'Como chegar?')
-                  BigLocation(
-                    pressed: true,
+                  BigLocation(pressed : () => print('Abrindo mapa...')
+
                   )
                 //Widget Ícone Grande
               ],
