@@ -83,7 +83,8 @@ A batida do atabaque induz o cérebro a emitir ondas cerebrais diferentes das ha
 
 É comum que os ogãs sintam as energias dos Orixás e dos guias que vêm trabalhar na gira. Mesmo sem dar passagem de forma tradicional (incorporação), eles podem se beneficiar dessas energias, fortalecendo-se para manter a vibração necessária ao bom andamento dos trabalhos.
 
-(Pai Emílio)
+Baseado nos livros: A música na umbanda e O livro básico dos Ogãs de Sandro da Costa Matos
+(Pai Ogã Emílio)
 
 ''';
 

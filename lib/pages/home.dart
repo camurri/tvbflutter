@@ -1,8 +1,9 @@
+import 'package:app_tvb/widgets/imageLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import 'theme_notifier.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:app_tvb/widgets/weeksEventsScreen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -52,23 +53,15 @@ class Home extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    SizedBox(height: screenHeight * 0.02),
+                    //SizedBox(height: screenHeight * 0.02),
+                    WeekEventsScreen(),
+
                     Hero(
                       tag: 'logo',
-                      child: SvgPicture.asset(
-                        // Imagem SVG com base no tema
-                        Theme.of(context).brightness == Brightness.light
-                            ? 'assets/images/svg/logo.svg'  // Versão clara
-                            : 'assets/images/svg/logo.svg',  // Versão escura
-                        width: 100, //largura do logo no topo da tela
-                        height: 100,// altura do logo no topo da tela
-                        colorFilter: ColorFilter.mode(
-                          Theme.of(context).colorScheme.primary, // Cor do tema
-                          BlendMode.srcIn,
-                        ),
-                      ),
+                      child: imageLoader()
                     ),
                     SizedBox(height: screenHeight * 0.05),
+
                     ConstrainedBox(
                       constraints: BoxConstraints(
                         maxWidth: 800,
@@ -77,6 +70,9 @@ class Home extends StatelessWidget {
                       child: CarouselWidget(),  // Certifique-se que seu widget de carousel está bem dimensionado
                     ),
                     SizedBox(height: screenHeight * 0.05),
+                    //MediunDivider(),
+
+
                   ],
                 ),
               ),
