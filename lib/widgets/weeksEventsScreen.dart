@@ -38,12 +38,11 @@ class WeekEventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        getWeekReminder(),
-        style: TextStyle(fontSize: 30),
-        textAlign: TextAlign.center,
-      ),
+    return
+          Text(
+            getWeekReminder(),
+            style: TextStyle(fontSize: 30),
+            textAlign: TextAlign.center,
     );
   }
 }

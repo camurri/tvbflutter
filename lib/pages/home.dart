@@ -2,6 +2,7 @@ import 'package:app_tvb/widgets/imageLoader.dart';
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
+import '../widgets/mediunDivider.dart';
 import 'theme_notifier.dart';
 import 'package:app_tvb/widgets/weeksEventsScreen.dart';
 
@@ -54,13 +55,16 @@ class Home extends StatelessWidget {
                 child: Column(
                   children: [
                     //SizedBox(height: screenHeight * 0.02),
-                    WeekEventsScreen(),
+
+
+
 
                     Hero(
                       tag: 'logo',
-                      child: imageLoader()
+                      child: imageLoader(logoSize: logoSize,)
                     ),
-                    SizedBox(height: screenHeight * 0.05),
+
+                    //SizedBox(height: screenHeight * 0.05),
 
                     ConstrainedBox(
                       constraints: BoxConstraints(
@@ -70,7 +74,9 @@ class Home extends StatelessWidget {
                       child: CarouselWidget(),  // Certifique-se que seu widget de carousel está bem dimensionado
                     ),
                     SizedBox(height: screenHeight * 0.05),
-                    //MediunDivider(),
+                    MediunDivider(),
+
+
 
 
                   ],

@@ -40,7 +40,7 @@ class _SplashState extends State<Splash> {
                 Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInOut)),
               ),
               child: SvgPicture.asset(
-                'assets/images/svg/logo.svg',
+                'assets/images/svg/bkg.svg',
                 width: screenWidth * 0.6,  // Ajusta o tamanho com base na largura da tela
                 colorFilter: ColorFilter.mode(
                   Theme.of(context).primaryColor,  // Cor baseada no tema
@@ -50,7 +50,7 @@ class _SplashState extends State<Splash> {
             );
           },
           child: SvgPicture.asset(
-            'assets/images/bkg.svg',
+            'assets/images/svg/bkg.svg',
             width: 200,  // Tamanho fixo para o logo
             height: 200,
             colorFilter: ColorFilter.mode(

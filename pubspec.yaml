@@ -107,7 +107,7 @@ flutter:
 
 flutter_native_splash:
   color: "#FFFFFF"  # Cor de fundo
-  image: assets/images/png/bkg.png # A imagem de fundo
+  image: 'assets/images/png/bkg.png' # A imagem de fundo
   android: true
   ios: true
   fullscreen: true

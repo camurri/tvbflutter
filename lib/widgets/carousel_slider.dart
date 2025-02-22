@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:app_tvb/texts/texts.dart';
 import 'package:path/path.dart' as path;
 import 'package:app_tvb/widgets/mediunDivider.dart';
+
 ////////////////////////////////////////////////////////////
 class CarouselWidget extends StatelessWidget {
   CarouselWidget({super.key});
@@ -90,8 +91,10 @@ class _CarouselItemState extends State<CarouselItem> {
   //Aqui o tema é decidido entre claro e escuro
   @override
   Widget build(BuildContext context) {
+    //Cor do texto adaptável ao tema
     Color textColor =
         Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black;
+    //Cor do ícones do carroussel, adaptado ao tema
     Color iconColor = Theme.of(context).brightness == Brightness.light
         ? Color(0xFF032156)
         : Color(0xFFFFFFFF);
@@ -118,12 +121,10 @@ class _CarouselItemState extends State<CarouselItem> {
 
             /////////////////////////////////////////////////////////////
             // TRECHO DE CÓDIGO DOS ÍCONES DO CARROSSEL
-            SvgPicture.asset(
-              widget.item['icon'],
-              width: 86.0,
-              height: 86.0,
-              color: iconColor,
-            ),
+            SvgPicture.asset(widget.item['icon'],
+                width: 86.0,
+                height: 86.0,
+                colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn)),
             //////////////////////////////////////////////////////////////
           ],
         ),
@@ -183,13 +184,9 @@ class _CarouselItemState extends State<CarouselItem> {
     else
       imagePath = 'assets/images/svg/logo.svg';
 
-    if (imagePath != null) {
-      String extension = path.extension(imagePath);
-      print(
-          extension); /////////////////////////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    } else {
-      print('Path incorrect');
-    }
+    String extension = path.extension(imagePath);
+    print(
+        extension); /////////////////////////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //Tempo de transição entre o clique no item e abertura de DatailPage
     Future.delayed(const Duration(milliseconds: 500), () {
@@ -252,6 +249,7 @@ class DetailPage extends StatelessWidget {
   final String textContent; // O texto dos cards
   final String imagePath; // a imagem dos cards
 
+
   const DetailPage(
       {super.key,
       required this.title,
@@ -271,48 +269,50 @@ class DetailPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-
-
                 ClipRRect(
                   //Responsável por arredondar as bordas da imagem
                   borderRadius: BorderRadius.circular(20.0),
-                  child: imagePath.endsWith('.svg') // Verifica se a imagem é SVG
-                      ? SvgPicture.asset(
-                          imagePath, // Imagem SVG que será carregada
-                          height: 400,
-                          fit: BoxFit.cover,
-                          color:
-                              Theme.of(context).brightness == Brightness.light
-                                  ? Color(0xFF032156)
-                                  : Color(0xFFFFFFFF),
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error);
-                          },
-                        )
-                      : Image.asset(imagePath, // Imagem PNG que será carregada
-                          height: 400,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) {
-                            return const Icon(Icons.error);
-                          },
-                        ),
+                  child:
+                      imagePath.endsWith('.svg') // Verifica se a imagem é SVG
+                          ? SvgPicture.asset(
+                              imagePath, // Imagem SVG que será carregada
+                              height: 200,
+                              fit: BoxFit.cover,
+
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).colorScheme.primary,
+                                  BlendMode.srcIn),
+                              errorBuilder: (context, error, stackTrace) {
+                                //Tratamento de erro do ícone
+                                return const Icon(Icons.error);
+                              },
+                            )
+                          : Image.asset(
+                              imagePath, // Imagem PNG que será carregada
+                              height: 200,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            ),
                 ),
 
                 //const SizedBox(height: 15),
 
-                const MediunDivider(), // (mediunDivider.dart)
-
+                const MediunDivider(),
+                // (mediunDivider.dart)
 
                 // Espaço entre Imagem e texto de exibição
 
-                MySheetText(textContent: textContent),// Widget de Texto (sheetText.dart)
-
+                MySheetText(textContent: textContent),
+                // Widget de Texto (sheetText.dart)
 
                 //Verifica se a lógica do mapa pode ou não ser carregada
                 if (title == 'Como chegar?')
-
-                  BigLocation(pressed: true,) //Widget Ícone Grande
-
+                  BigLocation(
+                    pressed: true,
+                  )
+                //Widget Ícone Grande
               ],
             ),
           ),
