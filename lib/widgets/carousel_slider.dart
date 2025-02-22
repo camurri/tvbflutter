@@ -1,11 +1,14 @@
-import 'package:app_tvb/widgets/bigLocation.dart';
-import 'package:app_tvb/widgets/sheetText.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:app_tvb/texts/texts.dart';
 import 'package:path/path.dart' as path;
+
+import 'package:app_tvb/widgets/bigLocation.dart';
+import 'package:app_tvb/widgets/sheetText.dart';
+import 'package:app_tvb/texts/texts.dart';
 import 'package:app_tvb/widgets/mediunDivider.dart';
+
+
 
 ////////////////////////////////////////////////////////////
 class CarouselWidget extends StatelessWidget {
@@ -39,15 +42,26 @@ class CarouselWidget extends StatelessWidget {
     );
   }
 
+
+
+  final List<Map<String, dynamic>> _itensGiraDaSemana =[
+    {'paths' : 'assets/images/svg/fumo.svg'},
+    {'paths' : 'assets/images/svg/ancora.svg'},
+    {'paths' : 'assets/images/svg/arco.svg'},
+    {'paths' : 'assets/images/svg/coco.svg'},
+    {'paths' : 'assets/images/svg/tridente.svg'},
+];
+
+
+
+
   //////////////////////////////////////////////////////////////////////
-  //Aqui trata-se apenas das imagens dos items do carrossel em formato .png
-  final List<Map<String, dynamic>> _itemsGeral = [
+  //Aqui trata-se apenas das imagens dos items do carrossel em formato .svg
+  late List<Map<String, dynamic>> _itemsGeral = [
+    {'text': 'Essa Semana', 'icon': _itensGiraDaSemana[4]['paths']},
     {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
     {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
-    {
-      'text': 'Pontos do Terreiro',
-      'icon': 'assets/images/svg/african-drum.svg'
-    },
+    {'text': 'Pontos do Terreiro', 'icon': 'assets/images/svg/african-drum.svg'},
     {'text': 'Orações', 'icon': 'assets/images/svg/pray.svg'},
     {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
   ];
@@ -63,6 +77,7 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
     {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
     {'text': 'Nossa História', 'icon': 'assets/images/svg/logo.svg'},
+
   ];
 }
 
