@@ -13,7 +13,6 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    // Atraso de 3 segundos para navegação
     Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
       Navigator.pushReplacement(
@@ -28,34 +27,17 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       body: Center(
         child: Hero(
           tag: 'logo',
-          flightShuttleBuilder: (context, animation, direction, fromContext, toContext) {
-            return ScaleTransition(
-              scale: animation.drive(
-                Tween(begin: 1.2, end: 1.0).chain(CurveTween(curve: Curves.easeInOut)),
-              ),
-              child: SvgPicture.asset(
-                'assets/images/svg/bkg.svg',
-                width: screenWidth * 0.6,  // Ajusta o tamanho com base na largura da tela
-                colorFilter: ColorFilter.mode(
-                  Theme.of(context).primaryColor,  // Cor baseada no tema
-                  BlendMode.srcIn,  // Aplica a cor ao SVG
-                ),
-              ),
-            );
-          },
           child: SvgPicture.asset(
             'assets/images/svg/bkg.svg',
-            width: 200,  // Tamanho fixo para o logo
-            height: 200,
+            width: 400,
+            height: 400,
             colorFilter: ColorFilter.mode(
-              Theme.of(context).primaryColor,  // Pega a cor do tema
-              BlendMode.srcIn,  // Aplica a cor ao SVG
+              Theme.of(context).primaryColor,
+              BlendMode.srcIn,
             ),
           ),
         ),

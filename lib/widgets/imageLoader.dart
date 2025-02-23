@@ -3,10 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class imageLoader extends StatelessWidget {
   
-  final path = 'assets/images/svg/logo.svg';
+  String path;
   final double logoSize;
 
-  imageLoader({super.key, required this.logoSize});
+  imageLoader({super.key, required this.logoSize, required this.path});
 
   @override
   Widget build(BuildContext context) {

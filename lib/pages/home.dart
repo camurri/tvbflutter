@@ -1,12 +1,37 @@
-import 'package:app_tvb/widgets/imageLoader.dart';
 import 'package:flutter/material.dart';
+import 'package:app_tvb/widgets/imageLoader.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
-import '../widgets/mediunDivider.dart';
-import 'theme_notifier.dart';
+import '../theme/theme_notifier.dart';
+import '../widgets/weeksEventsScreen.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _fadeAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1000),
+      vsync: this,
+    )..forward();
+
+    _fadeAnimation = Tween<double>(begin: 0, end: 1).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +44,8 @@ class Home extends StatelessWidget {
         title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(height: 20), //Posição do texto da AppBar em relação ao topo
-            const Text(
-              'TVB Digital',
-              style: TextStyle(fontSize: 20),
-            ),
+            const SizedBox(height: 20),
+            const Text('TVB Digital', style: TextStyle(fontSize: 20)),
           ],
         ),
         centerTitle: true,
@@ -37,7 +59,6 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-
       body: LayoutBuilder(
         builder: (context, constraints) {
           double logoSize = constraints.maxWidth * 0.3;
@@ -53,31 +74,20 @@ class Home extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    //SizedBox(height: screenHeight * 0.02),
-
-
-
-
-                    Hero(
-                      tag: 'logo',
-                      child: imageLoader(logoSize: logoSize,)
-                    ),
-
-                    //SizedBox(height: screenHeight * 0.05),
-
-                    ConstrainedBox(
-                      constraints: BoxConstraints(
-                        maxWidth: 800,
-                        minWidth: 300,
+                    FadeTransition(
+                      opacity: _fadeAnimation,
+                      child: Hero(
+                        tag: 'logo',
+                        child: imageLoader(logoSize: logoSize, path: 'assets/images/svg/logo.svg'),
                       ),
-                      child: CarouselWidget(),  // Certifique-se que seu widget de carousel está bem dimensionado
+                    ),
+                    WeekEventsScreen(),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 800, minWidth: 300),
+                      child:  CarouselWidget(),
                     ),
                     SizedBox(height: screenHeight * 0.05),
-                    MediunDivider(),
-
-
-
-
+                   // const MediunDivider(),
                   ],
                 ),
               ),

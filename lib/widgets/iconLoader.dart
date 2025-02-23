@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class iconLoader extends StatelessWidget {
+class IconLoader extends StatelessWidget {
 
-  final path = 'assets/images/svg/bkg.svg';
-  const iconLoader({super.key});
+  final path = 'assets/images/svg/tridente.svg';
+  const IconLoader({super.key});
 
   @override
   Widget build(BuildContext context) {

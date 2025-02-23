@@ -1,8 +1,10 @@
-import 'package:app_tvb/theme/theme_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:app_tvb/theme/theme_colors.dart';
+import 'theme/theme_notifier.dart';
 import 'pages/splash.dart';
-import 'pages/theme_notifier.dart';
+
 
 void main() {
   runApp(const MyApp());

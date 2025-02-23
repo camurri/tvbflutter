@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_tvb/texts/weekTexts.dart';
+import 'iconLoader.dart';
 
 class WeekEventsScreen extends StatelessWidget {
   String getWeekReminder() {
@@ -24,13 +25,13 @@ class WeekEventsScreen extends StatelessWidget {
       case 1:
         return week_txts['week_txt_1'] ?? "Pretos Velhos e Erês";
       case 2:
-        return week_txts['week_txt_2'] ?? "Cabolhos e Boiadeiros";
+        return week_txts['week_txt_2'] ?? "Cabolhos e Boiadediros";
       case 3:
         return week_txts['week_txt_3'] ?? "Baianos e Marinheiros";
       case 4:
         return week_txts['week_txt_4'] ?? "Semana de Esquerda";
       case 5:
-        return week_txts['week_txt_5']  ?? "Nova agenda em breve";
+        return week_txts['week_txt_5'] ?? "Nova agenda em breve";
       default:
         return week_txts['week_txt_default'] ?? "Bem-vindo";
     }
@@ -38,11 +39,16 @@ class WeekEventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-          Text(
-            getWeekReminder(),
-            style: TextStyle(fontSize: 30),
-            textAlign: TextAlign.center,
+    return Column(
+      children: [
+        Text(
+          getWeekReminder(),
+          style: TextStyle(fontSize: 30),
+          textAlign: TextAlign.center,
+        ),
+        IconLoader(),
+        const Text('TVB', style: TextStyle(fontSize: 20)),
+      ],
     );
   }
 }

@@ -52,17 +52,17 @@ class CarouselWidget extends StatelessWidget {
     {'paths' : 'assets/images/svg/tridente.svg'},
 ];
 
-
-
+  String weekEvent_path = 'assets/images/svg/coco.svg';
 
   //////////////////////////////////////////////////////////////////////
   //Aqui trata-se apenas das imagens dos items do carrossel em formato .svg
   late List<Map<String, dynamic>> _itemsGeral = [
-    {'text': 'Essa Semana', 'icon': _itensGiraDaSemana[4]['paths']},
-    {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
+    //{'text': 'Essa Semana', 'icon': _itensGiraDaSemana[0]['paths']},
     {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
+    {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
     {'text': 'Pontos do Terreiro', 'icon': 'assets/images/svg/african-drum.svg'},
     {'text': 'Orações', 'icon': 'assets/images/svg/pray.svg'},
+    {'text': 'Nossa História', 'icon': 'assets/images/svg/bkg.svg'},
     {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
   ];
 
@@ -76,7 +76,6 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
     {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
     {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
-    {'text': 'Nossa História', 'icon': 'assets/images/svg/logo.svg'},
 
   ];
 }
@@ -304,7 +303,7 @@ class DetailPage extends StatelessWidget {
                             )
                           : Image.asset(
                               imagePath, // Imagem PNG que será carregada
-                              height: 200,
+                              height: 400,
                               fit: BoxFit.cover,
                               errorBuilder: (context, error, stackTrace) {
                                 return const Icon(Icons.error);
@@ -315,7 +314,6 @@ class DetailPage extends StatelessWidget {
                 //const SizedBox(height: 15),
 
                 const MediunDivider(),
-                // (mediunDivider.dart)
 
                 // Espaço entre Imagem e texto de exibição
 
@@ -324,9 +322,9 @@ class DetailPage extends StatelessWidget {
 
                 //Verifica se a lógica do mapa pode ou não ser carregada
                 if (title == 'Como chegar?')
-                  BigLocation(pressed : () => print('Abrindo mapa...')
+                   BigLocation(pressed : () => print('Abrindo mapa...'),
+                  ),
 
-                  )
                 //Widget Ícone Grande
               ],
             ),
