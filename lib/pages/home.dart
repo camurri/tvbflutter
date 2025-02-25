@@ -78,7 +78,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                       opacity: _fadeAnimation,
                       child: Hero(
                         tag: 'logo',
-                        child: imageLoader(logoSize: logoSize, path: 'assets/images/svg/logo.svg'),
+                        child: ImageLoader(logoSize: logoSize, path: 'assets/images/svg/logo.svg'),
                       ),
                     ),
                     WeekEventsScreen(),

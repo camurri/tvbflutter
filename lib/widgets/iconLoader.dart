@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class IconLoader extends StatelessWidget {
 
-  final path = 'assets/images/svg/tridente.svg';
-  const IconLoader({super.key});
+  String path;
+  IconLoader({super.key, required this.path});
 
   @override
   Widget build(BuildContext context) {

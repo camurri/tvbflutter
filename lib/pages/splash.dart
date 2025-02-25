@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import '../theme/theme_notifier.dart';
 import 'home.dart';
 
 class Splash extends StatefulWidget {
@@ -27,20 +28,30 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    final isDarkMode = Provider.of<ThemeNotifier>(context).themeMode == ThemeMode.dark;
+
     return Scaffold(
-      body: Center(
-        child: Hero(
-          tag: 'logo',
-          child: SvgPicture.asset(
-            'assets/images/svg/bkg.svg',
-            width: 400,
-            height: 400,
-            colorFilter: ColorFilter.mode(
-              Theme.of(context).primaryColor,
-              BlendMode.srcIn,
+      body: Stack(
+        children: [
+          Center(
+            child: Hero(
+              tag: 'logo',
+              child: Image.asset(
+                isDarkMode
+                    ? 'assets/images/png/bkg.png'  // Imagem para o tema escuro
+                    : 'assets/images/png/bkg.png', // Imagem para o tema claro
+                width: 400,
+                height: 400,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-        ),
+          Positioned(
+            bottom: 20,
+            right: 20,
+            child: const CircularProgressIndicator(),
+          ),
+        ],
       ),
     );
   }

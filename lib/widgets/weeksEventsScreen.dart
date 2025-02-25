@@ -1,14 +1,27 @@
-import 'package:flutter/material.dart';
-import 'package:app_tvb/texts/weekTexts.dart';
+
+import 'package:flutter/cupertino.dart';
+
+import '../texts/weekTexts.dart';
 import 'iconLoader.dart';
 
 class WeekEventsScreen extends StatelessWidget {
-  String getWeekReminder() {
+  Map<String, String> getWeekReminder() {
     DateTime now = DateTime.now();
+    String message;
+    String imagePath;
 
-    // Se for dezembro, exibe a mensagem fixa de "Boas Festas"
+    // Verifica se é dezembro
     if (now.month == 12) {
-      return "Desejamos a todos🎄 Boas Festas !🎁";
+      message = "Desejamos a todos🎄 Boas Festas !🎁";
+      imagePath = 'assets/images/svg/logo.svg'; // Use a imagem padrão para dezembro
+      return {'message': message, 'imagePath': imagePath};
+    }
+
+    // Verifica se é domingo e se o horário está entre 18:00 e 23:59
+    if (now.weekday == DateTime.sunday && now.hour >= 18 && now.hour <= 23) {
+      message = week_txts['week_txt_5'] ?? "Nova agenda em breve";
+      imagePath = week_txts['path_icon_5'] ?? 'assets/images/svg/logo.svg';
+      return {'message': message, 'imagePath': imagePath};
     }
 
     // Obtém o primeiro dia do mês
@@ -23,31 +36,47 @@ class WeekEventsScreen extends StatelessWidget {
     // Define um lembrete para cada semana (exceto dezembro)
     switch (weekOfMonth) {
       case 1:
-        return week_txts['week_txt_1'] ?? "Pretos Velhos e Erês";
+        message = week_txts['week_txt_1'] ?? "Pretos Velhos e Erês";
+        imagePath = week_txts['path_icon_1'] ?? 'assets/images/svg/chupeta.svg';
+        break;
       case 2:
-        return week_txts['week_txt_2'] ?? "Cabolhos e Boiadediros";
+        message = week_txts['week_txt_2'] ?? "Caboclos e Boiadeiros";
+        imagePath = week_txts['path_icon_2'] ?? 'assets/images/svg/flecha.svg';
+        break;
       case 3:
-        return week_txts['week_txt_3'] ?? "Baianos e Marinheiros";
+        message = week_txts['week_txt_3'] ?? "Baianos e Marinheiros";
+        imagePath = week_txts['path_icon_3'] ?? 'assets/images/svg/coco.svg';
+        break;
       case 4:
-        return week_txts['week_txt_4'] ?? "Semana de Esquerda";
+        message = week_txts['week_txt_4'] ?? "Semana de Esquerda";
+        imagePath = week_txts['path_icon_4'] ?? 'assets/images/svg/tridente.svg';
+        break;
       case 5:
-        return week_txts['week_txt_5'] ?? "Nova agenda em breve";
+        message = week_txts['week_txt_5'] ?? "Nova agenda em breve";
+        imagePath = week_txts['path_icon_5'] ?? 'assets/images/svg/logo.svg';
+        break;
       default:
-        return week_txts['week_txt_default'] ?? "Bem-vindo";
+        message = week_txts['week_txt_default'] ?? "Bem-vindo";
+        imagePath = week_txts['path_icon_6'] ?? 'assets/images/svg/logo.svg';
+        break;
     }
+
+    return {'message': message, 'imagePath': imagePath};
   }
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> reminder = getWeekReminder();
+
     return Column(
       children: [
         Text(
-          getWeekReminder(),
+          reminder['message']!,
           style: TextStyle(fontSize: 30),
           textAlign: TextAlign.center,
         ),
-        IconLoader(),
-        const Text('TVB', style: TextStyle(fontSize: 20)),
+        IconLoader(path: reminder['imagePath']!),
+        Text('TVB', style: TextStyle(fontSize: 20)),
       ],
     );
   }

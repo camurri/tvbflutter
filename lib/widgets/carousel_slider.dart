@@ -62,7 +62,7 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
     {'text': 'Pontos do Terreiro', 'icon': 'assets/images/svg/african-drum.svg'},
     {'text': 'Orações', 'icon': 'assets/images/svg/pray.svg'},
-    {'text': 'Nossa História', 'icon': 'assets/images/svg/bkg.svg'},
+    {'text': 'Nossa História', 'icon': 'assets/images/svg/logo.svg'},
     {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
   ];
 
