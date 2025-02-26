@@ -149,11 +149,20 @@ class _CarouselItemState extends State<CarouselItem> {
   //////////////////////////////////////////////////////////////////////////
   void _handleItemClick(BuildContext context, String itemText) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        backgroundColor: const Color(0xFF032156),
-        content: Text(mensagens[indiceMensagem], textAlign: TextAlign.center),
-        duration: const Duration(seconds: 1),
-      ),
+        SnackBar(
+          backgroundColor: const Color(0xFF032156),
+          content: Text(
+            mensagens[indiceMensagem],
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.blue,
+            ),
+          ),
+          duration: const Duration(seconds: 1),
+        )
+
     );
 
     //Increcenta +1 a cada vez que o item for clicado, para exibir frases distintas
