@@ -1,6 +1,4 @@
-
 import 'package:flutter/cupertino.dart';
-
 import '../texts/weekTexts.dart';
 import 'iconLoader.dart';
 
@@ -32,6 +30,13 @@ class WeekEventsScreen extends StatelessWidget {
 
     // Garante que a semana não seja maior que 5
     if (weekOfMonth > 5) weekOfMonth = 5;
+
+    // Modificação: Adicionando um controle especial para o dia 25 de fevereiro de 2025
+    if (now.year == 2025 && now.month == 2 && now.day == 25) {
+      message = week_txts['week_txt_1'] ?? "Pretos Velhos e Erês";
+      imagePath = week_txts['path_icon_1'] ?? 'assets/images/svg/chupeta.svg';
+      return {'message': message, 'imagePath': imagePath};
+    }
 
     // Define um lembrete para cada semana (exceto dezembro)
     switch (weekOfMonth) {
