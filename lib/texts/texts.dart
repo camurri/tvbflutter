@@ -165,6 +165,23 @@ No TVB Verde, é realizado o cultivo das ervas, sempre respeitando seu ciclo nat
 ''';
 
 
+String oracoes = '''
+A Umbanda é uma religião brasileira que mistura elementos do catolicismo, do espiritismo e das religiões afro-brasileiras, formando um sincretismo único. Essa característica se reflete em práticas como a oração da Ave Maria ou o Pai Nosso antes de iniciar uma sessão, que não só demonstram o sincretismo da religião, mas também o respeito por todas as crenças. Isso se alinha ao propósito da Umbanda de ajudar todas as almas, independentemente da natureza de sua fé.
+
+A oração, em sua essência, é um ato de elevação da alma a Deus, no qual expressamos nossa adoração, agradecemos pelos benefícios recebidos e pedimos as graças necessárias para nossa jornada. Ela é uma manifestação de fé, reconhecendo a presença divina e a atuação de Deus no mundo, no terreiro e na vida de cada indivíduo. A oração é, assim, uma maneira de preparar nossa vida para acolher as bênçãos de Deus.
+
+As orações iniciais, antes da realização dos trabalhos no terreiro, têm um propósito específico: estabelecer uma conexão com o Pai Maior, pedir permissão para os trabalhos espirituais, invocar o manto sagrado de proteção sobre o terreiro e os participantes, e pedir a orientação de Deus para os objetivos da gira do dia. Os benefícios dessas orações são claros: a gira começa com uma forte conexão espiritual, alinhando a energia dos filhos da corrente e da assistência com o propósito de estarem reunidos naquele momento. Essa sintonia cria uma atmosfera propícia para o trabalho espiritual, favorecendo a harmonia e a eficácia dos processos que serão conduzidos durante a sessão.
+
+Das preces de abertura:
+
+O Pai Nosso é uma oração central no cristianismo e na umbanda, abordando aspectos essenciais da vida humana, como a filiação a Deus, e reflete a mensagem central da pregação de Jesus. Ela expressa confiança em Deus e o desejo de viver segundo seus ensinamentos, sendo fundamental para a vida cristã.
+
+A Ave Maria e Nossa Senhora têm grande importância na Umbanda, simbolizando amor, proteção e espiritualidade. Essa oração, que reconhece Maria como intercessora e expressa humildade, é recitada com fé e esperança para atrair misericórdia e conexão com a energia divina feminina.
+
+A Prece de Cáritas é uma oração de amor e compaixão na Umbanda, promovendo a paz interior e a luz no mundo. Ela ajuda a estabelecer uma conexão profunda com Deus, trazendo serenidade e promovendo o bem.
+
+''';
+
 Map<String, String> texts = {
   'Redes Sociais': redesSociais,
   'Gira Cigana': giraCigana,
@@ -179,6 +196,7 @@ Map<String, String> texts = {
   'Regras' : normasEregras,
   'TVB Verde': tvbVerde,
   'Medicinas': medicinasXamanicas,
+  'Orações': oracoes
 
 };
 
