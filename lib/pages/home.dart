@@ -3,7 +3,6 @@ import 'package:app_tvb/widgets/imageLoader.dart';
 import 'package:app_tvb/widgets/carousel_slider.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme_notifier.dart';
-import '../widgets/weeksEventsScreen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -40,11 +39,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: const Color(0xFFFFFFFF),
+        foregroundColor: const Color(0xFF78F436),
         title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const SizedBox(height: 10),
+            const SizedBox(height: 7),
             const Text('TVB Digital', style: TextStyle(fontSize: 20)),
           ],
         ),
@@ -61,7 +60,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          double logoSize = constraints.maxWidth * 0.3;
+          double logoSize = constraints.maxWidth * 0.2;
           if (constraints.maxWidth < 600) logoSize = constraints.maxWidth * 0.5;
           if (constraints.maxWidth > 1200) logoSize = constraints.maxWidth * 0.2;
 
@@ -81,7 +80,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
                         child: ImageLoader(logoSize: logoSize, path: 'assets/images/svg/logo.svg'),
                       ),
                     ),
-                    WeekEventsScreen(),
+
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 800, minWidth: 300),
                       child:  CarouselWidget(),

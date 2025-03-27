@@ -8,8 +8,6 @@ import 'package:app_tvb/widgets/sheetText.dart';
 import 'package:app_tvb/texts/texts.dart';
 import 'package:app_tvb/widgets/mediunDivider.dart';
 
-
-
 ////////////////////////////////////////////////////////////
 class CarouselWidget extends StatelessWidget {
   CarouselWidget({super.key});
@@ -42,15 +40,13 @@ class CarouselWidget extends StatelessWidget {
     );
   }
 
-
-
-  final List<Map<String, dynamic>> _itensGiraDaSemana =[
-    {'paths' : 'assets/images/svg/fumo.svg'},
-    {'paths' : 'assets/images/svg/ancora.svg'},
-    {'paths' : 'assets/images/svg/arco.svg'},
-    {'paths' : 'assets/images/svg/coco.svg'},
-    {'paths' : 'assets/images/svg/tridente.svg'},
-];
+  final List<Map<String, dynamic>> _itensGiraDaSemana = [
+    {'paths': 'assets/images/svg/fumo.svg'},
+    {'paths': 'assets/images/svg/ancora.svg'},
+    {'paths': 'assets/images/svg/arco.svg'},
+    {'paths': 'assets/images/svg/coco.svg'},
+    {'paths': 'assets/images/svg/tridente.svg'},
+  ];
 
   String weekEvent_path = 'assets/images/svg/coco.svg';
 
@@ -60,7 +56,10 @@ class CarouselWidget extends StatelessWidget {
     //{'text': 'Essa Semana', 'icon': _itensGiraDaSemana[0]['paths']},
     {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
     {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
-    {'text': 'Pontos do Terreiro', 'icon': 'assets/images/svg/african-drum.svg'},
+    {
+      'text': 'Pontos do Terreiro',
+      'icon': 'assets/images/svg/african-drum.svg'
+    },
     {'text': 'Orações', 'icon': 'assets/images/svg/pray.svg'},
     {'text': 'Nossa História', 'icon': 'assets/images/svg/logo.svg'},
     {'text': 'Redes Sociais', 'icon': 'assets/images/svg/social-media.svg'},
@@ -76,7 +75,6 @@ class CarouselWidget extends StatelessWidget {
     {'text': 'Gira das Bruxas', 'icon': 'assets/images/svg/spell-book.svg'},
     {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
     {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
-
   ];
 }
 
@@ -148,22 +146,19 @@ class _CarouselItemState extends State<CarouselItem> {
 
   //////////////////////////////////////////////////////////////////////////
   void _handleItemClick(BuildContext context, String itemText) {
-    ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: const Color(0xFF032156),
-          content: Text(
-            mensagens[indiceMensagem],
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.white
-                  : Colors.blue,
-            ),
-          ),
-          duration: const Duration(seconds: 1),
-        )
-
-    );
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: const Color(0xFF032156),
+      content: Text(
+        mensagens[indiceMensagem],
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? Colors.white
+              : Colors.blue,
+        ),
+      ),
+      duration: const Duration(seconds: 1),
+    ));
 
     //Increcenta +1 a cada vez que o item for clicado, para exibir frases distintas
     setState(() {
@@ -272,7 +267,6 @@ class DetailPage extends StatelessWidget {
   final String textContent; // O texto dos cards
   final String imagePath; // a imagem dos cards
 
-
   const DetailPage(
       {super.key,
       required this.title,
@@ -320,6 +314,23 @@ class DetailPage extends StatelessWidget {
                             ),
                 ),
 
+                if (title == 'Orações') // Verifica se a lógica do mapa pode ou não ser carregada
+                  Container(
+                    padding: EdgeInsets.all(16.0),
+                    decoration: BoxDecoration(color: Color(0xFF032156), borderRadius: BorderRadius.circular(16.0),),
+                    child: Column(
+                      children: [
+                        Text("Acessar orações", style: TextStyle(fontSize: 22, color: Colors.white),),// Texto de orações
+                        IconButton(
+                          color: Colors.white,
+                          onPressed: () {}, // Ação ao pressionar o botão
+                          iconSize: 50,
+                          icon: const Icon(Icons.play_arrow), // Ícone de play
+                        ),
+                      ],
+                    ),
+                  ),
+
                 //const SizedBox(height: 15),
 
                 const MediunDivider(),
@@ -331,9 +342,9 @@ class DetailPage extends StatelessWidget {
 
                 //Verifica se a lógica do mapa pode ou não ser carregada
                 if (title == 'Como chegar?')
-                   BigLocation(pressed : () => print('Abrindo mapa...'),
+                  BigLocation(
+                    pressed: () => print('Abrindo mapa...'),
                   ),
-
                 //Widget Ícone Grande
               ],
             ),
