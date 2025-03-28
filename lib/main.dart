@@ -3,9 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:app_tvb/theme/theme_colors.dart';
 import 'theme/theme_notifier.dart';
 import 'pages/splash.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  runApp(const MyApp()
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "722908750686",
+    "project_id": "app-tvb-ccf10",
+    "storage_bucket": "app-tvb-ccf10.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:722908750686:android:47445d421e4d25266965cf",
+        "android_client_info": {
+          "package_name": "br.com.app_tvb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCiq26Yc9iy-_bC1LqRx9S-0M3JtmmTuCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
