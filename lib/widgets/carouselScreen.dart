@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:path/path.dart' as path;
-
-import 'package:app_tvb/widgets/bigLocation.dart';
-import 'package:app_tvb/widgets/sheetText.dart';
 import 'package:app_tvb/texts/texts.dart';
 import 'package:app_tvb/widgets/mediunDivider.dart';
+import 'carouselWidget.dart';
+import 'detailPage.dart';
 
 ////////////////////////////////////////////////////////////
-class CarouselWidget extends StatelessWidget {
-  CarouselWidget({super.key});
+class CarouselScreen extends StatelessWidget {
+  CarouselScreen({super.key});
 
   //Aqui é contruida a estrutura contendo dois carrosseis dentro de
   //Uma coluna
@@ -21,17 +19,15 @@ class CarouselWidget extends StatelessWidget {
         // Coluna de organização dos carrosseis
         children: [
           //Carrossel superior
-          DelayedCarousel(
+          CarouselWidget(
             items: _itemsGeral,
-            delay: const Duration(milliseconds: 500),
+            delay: const Duration(seconds: 1),
           ),
-
           MediunDivider(),
-
-          //Carrossel superior
-          DelayedCarousel(
+          //Carrossel inferior
+          CarouselWidget(
             items: _itemsGiras,
-            delay: const Duration(milliseconds: 500),
+            delay: const Duration(seconds: 1),
           ),
 
           //Implementar mais carrosseis ou outros componente aqui se necessário
@@ -48,11 +44,8 @@ class CarouselWidget extends StatelessWidget {
     {'paths': 'assets/images/svg/tridente.svg'},
   ];
 
-  String weekEvent_path = 'assets/images/svg/coco.svg';
-
-  //////////////////////////////////////////////////////////////////////
   //Aqui trata-se apenas das imagens dos items do carrossel em formato .svg
-  late List<Map<String, dynamic>> _itemsGeral = [
+  final List<Map<String, dynamic>> _itemsGeral = [
     //{'text': 'Essa Semana', 'icon': _itensGiraDaSemana[0]['paths']},
     {'text': 'Giras da Semana', 'icon': 'assets/images/svg/schedule.svg'},
     {'text': 'Como chegar?', 'icon': 'assets/images/svg/road.svg'},
@@ -174,7 +167,7 @@ class _CarouselItemState extends State<CarouselItem> {
     String textContent = texts[itemText] ?? 'Texto não encontrado';
     String? imagePath;
 
-    print(itemText); //DEBUG: Não apagar
+    print(itemText); //do not erase this for while
 
     //imagePath vai receber o caminho da imagem de acordo com o itemText selecionado no carrossel
     if (itemText == 'Jardim de Aruanda')
@@ -183,8 +176,6 @@ class _CarouselItemState extends State<CarouselItem> {
       imagePath = 'assets/images/png/giraCigana.png';
     else if (itemText == 'Gira de Cura')
       imagePath = 'assets/images/png/giraDeCura.png';
-
-    ///
     else if (itemText == 'Umbanda Pet')
       imagePath = 'assets/images/png/umbandaPet.png';
     else if (itemText == 'Sagrado Feminino')
@@ -200,157 +191,34 @@ class _CarouselItemState extends State<CarouselItem> {
     else if (itemText == 'Nossa História')
       imagePath = 'assets/images/png/bkg.png';
     else
-      imagePath = 'assets/images/svg/logo.svg';
+      imagePath = 'assets/images/svg/coco.svg';
 
     String extension = path.extension(imagePath);
     print(
         extension); /////////////////////////////////<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
     //Tempo de transição entre o clique no item e abertura de DatailPage
-    Future.delayed(const Duration(milliseconds: 500), () {
-      //definir tempo
+    Future.delayed(
+      const Duration(seconds: 1),
+      () {
+        //definir tempo
 
-      //////////////////////////////////////////////////////////////////////////
-      Navigator.push(
-        //A partir daqui, a pagina de detalhes é carregada
-        context,
-        MaterialPageRoute(
-          builder: (context) => DetailPage(
-            title: itemText,
-            imagePath: imagePath ?? '', //Imagem a ser carregada
-            textContent: textContent, //Texto a ser carregado
-          ),
-        ),
-      );
-      //////////////////////////////////////////////////////////////////////////
-    });
-  }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//Setup do carrossel
-class DelayedCarousel extends StatelessWidget {
-  final List<Map<String, dynamic>> items;
-  final Duration delay;
-
-  const DelayedCarousel({super.key, required this.items, required this.delay});
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Future.delayed(delay),
-      builder: (context, snapshot) {
-        return AnimatedOpacity(
-          opacity: snapshot.connectionState == ConnectionState.done ? 1.0 : 0.0,
-          duration: const Duration(seconds: 1),
-          child: CarouselSlider(
-            options: CarouselOptions(
-              height: 250.0,
-              reverse: true,
-              autoPlay: true,
-              enlargeCenterPage: false,
-              aspectRatio: 16 / 9,
-              viewportFraction: 0.8,
-              initialPage: 0,
+        //////////////////////////////////////////////////////////////////////////
+        Navigator.push(
+          //DetailPage() starts here é
+          context,
+          MaterialPageRoute(
+            builder: (context) => DetailPage(
+              title: itemText,
+              imagePath: imagePath ?? '', //Imagem a ser carregada
+              textContent: textContent, //Texto a ser carregado
             ),
-            items: items.map((item) => CarouselItem(item: item)).toList(),
           ),
         );
+        //////////////////////////////////////////////////////////////////////////
       },
     );
   }
 }
-////////////////////////////////////////////////////////////////////////////////
 
-class DetailPage extends StatelessWidget {
-  final String title; // O título do item do carrossel
-  final String textContent; // O texto dos cards
-  final String imagePath; // a imagem dos cards
 
-  const DetailPage(
-      {super.key,
-      required this.title,
-      required this.textContent,
-      required this.imagePath});
-
-  //DetailPage sendo construída e implementando a organização dos Widgets
-  @override
-  Widget build(BuildContext context) {
-    //Disposição dos componentes começa daqui
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipRRect(
-                  //Responsável por arredondar as bordas da imagem
-                  borderRadius: BorderRadius.circular(20.0),
-                  child:
-                      imagePath.endsWith('.svg') // Verifica se a imagem é SVG
-                          ? SvgPicture.asset(
-                              imagePath, // Imagem SVG que será carregada
-                              height: 200,
-                              fit: BoxFit.cover,
-
-                              colorFilter: ColorFilter.mode(
-                                  Theme.of(context).colorScheme.primary,
-                                  BlendMode.srcIn),
-                              errorBuilder: (context, error, stackTrace) {
-                                //Tratamento de erro do ícone
-                                return const Icon(Icons.error);
-                              },
-                            )
-                          : Image.asset(
-                              imagePath, // Imagem PNG que será carregada
-                              height: 400,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) {
-                                return const Icon(Icons.error);
-                              },
-                            ),
-                ),
-
-                if (title == 'Orações') // Verifica se a lógica do mapa pode ou não ser carregada
-                  Container(
-                    padding: EdgeInsets.all(16.0),
-                    decoration: BoxDecoration(color: Color(0xFF032156), borderRadius: BorderRadius.circular(16.0),),
-                    child: Column(
-                      children: [
-                        Text("Acessar orações", style: TextStyle(fontSize: 22, color: Colors.white),),// Texto de orações
-                        IconButton(
-                          color: Colors.white,
-                          onPressed: () {}, // Ação ao pressionar o botão
-                          iconSize: 50,
-                          icon: const Icon(Icons.play_arrow), // Ícone de play
-                        ),
-                      ],
-                    ),
-                  ),
-
-                //const SizedBox(height: 15),
-
-                const MediunDivider(),
-
-                // Espaço entre Imagem e texto de exibição
-
-                MySheetText(textContent: textContent),
-                // Widget de Texto (sheetText.dart)
-
-                //Verifica se a lógica do mapa pode ou não ser carregada
-                if (title == 'Como chegar?')
-                  BigLocation(
-                    pressed: () => print('Abrindo mapa...'),
-                  ),
-                //Widget Ícone Grande
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}

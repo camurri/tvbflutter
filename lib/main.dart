@@ -1,10 +1,13 @@
+import 'package:app_tvb/pages/home.dart';
+import 'package:app_tvb/widgets/cardWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:app_tvb/theme/theme_colors.dart';
 import 'theme/theme_notifier.dart';
-import 'pages/splash.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'package:flutter/widgets.dart';
+//import 'pages/splash.dart';
+//import 'package:firebase_core/firebase_core.dart';
+//import 'firebase_options.dart';
 
 void main() async {
   runApp(const MyApp()
@@ -23,9 +26,9 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             themeMode: themeNotifier.themeMode,
-            theme: buildLightTheme(), // Tema claro
-            darkTheme: buildDarkTheme(), // Tema escuro
-            home: const Splash(),
+            theme: buildLightTheme(), // Light Theme
+            darkTheme: buildDarkTheme(), // Dark Theme
+            home: const Home(),
           );
         },
       ),

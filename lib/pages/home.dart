@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:app_tvb/widgets/imageLoader.dart';
-import 'package:app_tvb/widgets/carousel_slider.dart';
+import 'package:app_tvb/widgets/carouselScreen.dart';
 import 'package:provider/provider.dart';
 import '../theme/theme_notifier.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -39,7 +40,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
     return Scaffold(
       appBar: AppBar(
-        foregroundColor: const Color(0xFF78F436),
+        foregroundColor: const Color(0xFFFFFFFF),
         title: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -83,7 +84,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 800, minWidth: 300),
-                      child:  CarouselWidget(),
+                      child:  CarouselScreen(),
                     ),
                     SizedBox(height: screenHeight * 0.05),
                    // const MediunDivider(),
