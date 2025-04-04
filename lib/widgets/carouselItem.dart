@@ -4,7 +4,6 @@ import 'package:app_tvb/widgets/carouselWidget.dart';
 import 'package:app_tvb/widgets/mediunDivider.dart';
 import 'package:app_tvb/widgets/carouselData.dart';
 
-import 'carouselData.dart';
 
 class CarouselScreen extends StatelessWidget {
   const CarouselScreen({super.key});

@@ -1,9 +1,8 @@
 import 'package:app_tvb/widgets/sheetText.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import 'bigLocation.dart';
-import 'cardWidget.dart';
+import 'listPage.dart';
 import 'mediunDivider.dart';
 
 class DetailPage extends StatelessWidget {
@@ -70,8 +69,42 @@ class DetailPage extends StatelessWidget {
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Cardwidget()),
+                              MaterialPageRoute(
+                                builder: (context) => ContentListPage(
+                                  pageTitle: 'Orações',
+                                  items: [
+                                    {
+                                      'title': 'Prece de Abertura',
+                                      'icon': 'assets/images/svg/pray.svg',
+                                      'content': 'Rogamos a DEUS...',
+                                    },
+                                    {
+                                      'title': 'Prece de São Miguel Arcanjo',
+                                      'icon': 'assets/images/svg/pray.svg',
+                                      'content': 'São Miguel Arcanjo...',
+                                    },
+
+                                    {
+                                      'title': 'Prece de Cáritas',
+                                      'icon': 'assets/images/svg/pray.svg',
+                                      'content': 'Ave Maria, cheia de graça...',
+                                    },
+
+                                    {
+                                      'title': 'Pai Nosso',
+                                      'icon': 'assets/images/svg/pray.svg',
+                                      'content': 'Pai nosso que estais nos céus...',
+                                    },
+                                    {
+                                      'title': 'Ave Maria',
+                                      'icon': 'assets/images/svg/pray.svg',
+                                      'content': 'Ave Maria, cheia de graça...',
+                                    },
+                                  ],
+                                ),
+                              ),
                             );
+
                           },
 
                           iconSize: 50,
