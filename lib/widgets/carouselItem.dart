@@ -14,9 +14,9 @@ class CarouselScreen extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          CarouselWidget(items: itemsGeral, delay: const Duration(seconds: 1)),
+          CarouselWidget(items: itemsGeral, delay: const Duration(seconds: 1), reverse: true,),
           MediunDivider(),
-          CarouselWidget(items: itemsGiras, delay: const Duration(seconds: 1)),
+          CarouselWidget(items: itemsGiras, delay: const Duration(seconds: 1), reverse: false,),
         ],
       ),
     );

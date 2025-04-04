@@ -5,7 +5,8 @@ import 'carouselScreen.dart';
 class CarouselWidget extends StatelessWidget {
   final List<Map<String, dynamic>> items;
   final Duration delay;
-  const CarouselWidget({super.key, required this.items, required this.delay});
+  final bool reverse;
+  const CarouselWidget({super.key, required this.items, required this.delay, required this.reverse});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class CarouselWidget extends StatelessWidget {
           child: CarouselSlider(
             options: CarouselOptions(
               height: 250.0,
-              reverse: true,
+              reverse: reverse,
               autoPlay: true,
               enlargeCenterPage: false,
               aspectRatio: 16 / 9,

@@ -1,0 +1,2 @@
+C:/Users/paulo/Projetos/Flutter/tvbflutter/android/app/.cxx/Debug/71376k4u/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/paulo/Projetos/Flutter/tvbflutter/android/app/.cxx/Debug/71376k4u/armeabi-v7a/CMakeFiles/rebuild_cache.dir

@@ -21,13 +21,13 @@ class CarouselScreen extends StatelessWidget {
           //Carrossel superior
           CarouselWidget(
             items: _itemsGeral,
-            delay: const Duration(seconds: 1),
+            delay: const Duration(seconds: 1), reverse: true,
           ),
           MediunDivider(),
           //Carrossel inferior
           CarouselWidget(
             items: _itemsGiras,
-            delay: const Duration(seconds: 1),
+            delay: const Duration(seconds: 1), reverse: false,
           ),
 
           //Implementar mais carrosseis ou outros componente aqui se necessário
@@ -69,6 +69,7 @@ class CarouselScreen extends StatelessWidget {
     {'text': 'Medicinas', 'icon': 'assets/images/svg/cherokee.svg'},
     {'text': 'TVB Verde', 'icon': 'assets/images/svg/green.svg'},
   ];
+
 }
 
 /////////////////////////////////////////////////////////////////////////////
